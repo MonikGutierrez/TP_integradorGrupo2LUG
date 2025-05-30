@@ -1,0 +1,18 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Binarios y compilados
+bin/
+obj/
+
+# Archivos temporales
+*.log
+*.tmp
+*.cache
+
+# Configuraciones de entorno
+.vscode/
+*.dbmdl
+*.DS_Store
