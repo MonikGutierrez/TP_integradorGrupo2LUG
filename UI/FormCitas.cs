@@ -64,6 +64,11 @@ namespace UI
                 MessageBox.Show("Error al guardar cita: " + ex.Message);
             }
         }
+
+        private void dtpFechaHora_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // Extensión para mostrar algo legible en el ComboBox

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Button btnAlta;
+            Button btnModificar;
+            Button btnEliminar;
             txtNombre = new TextBox();
             txtApellido = new TextBox();
             txtEmail = new TextBox();
@@ -36,153 +40,196 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            dgvClientes = new DataGridView();
             btnAlta = new Button();
             btnModificar = new Button();
             btnEliminar = new Button();
-            dgvClientes = new DataGridView();
-            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(111, 30);
+            txtNombre.BackColor = Color.SeaShell;
+            txtNombre.ForeColor = Color.FromArgb(64, 0, 0);
+            txtNombre.Location = new Point(130, 21);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(150, 31);
+            txtNombre.Size = new Size(983, 25);
             txtNombre.TabIndex = 0;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(477, 30);
+            txtApellido.BackColor = Color.SeaShell;
+            txtApellido.ForeColor = Color.FromArgb(64, 0, 0);
+            txtApellido.Location = new Point(130, 65);
+            txtApellido.Margin = new Padding(3, 2, 3, 2);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(150, 31);
+            txtApellido.Size = new Size(983, 25);
             txtApellido.TabIndex = 2;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(111, 83);
+            txtEmail.BackColor = Color.SeaShell;
+            txtEmail.ForeColor = Color.FromArgb(64, 0, 0);
+            txtEmail.Location = new Point(130, 155);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(150, 31);
+            txtEmail.Size = new Size(983, 25);
             txtEmail.TabIndex = 3;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(477, 80);
+            txtTelefono.BackColor = Color.SeaShell;
+            txtTelefono.ForeColor = Color.FromArgb(64, 0, 0);
+            txtTelefono.Location = new Point(130, 110);
+            txtTelefono.Margin = new Padding(3, 2, 3, 2);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(150, 31);
+            txtTelefono.Size = new Size(983, 25);
             txtTelefono.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(18, 36);
+            label1.ForeColor = Color.FromArgb(64, 0, 0);
+            label1.Location = new Point(35, 24);
             label1.Name = "label1";
-            label1.Size = new Size(78, 25);
+            label1.Size = new Size(79, 17);
             label1.TabIndex = 5;
-            label1.Text = "Nombre";
+            label1.Text = "Nombre:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(350, 33);
+            label2.ForeColor = Color.FromArgb(64, 0, 0);
+            label2.Location = new Point(35, 68);
             label2.Name = "label2";
-            label2.Size = new Size(78, 25);
+            label2.Size = new Size(89, 17);
             label2.TabIndex = 6;
-            label2.Text = "Apellido";
+            label2.Text = "Apellido:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 83);
+            label3.ForeColor = Color.FromArgb(64, 0, 0);
+            label3.Location = new Point(35, 158);
             label3.Name = "label3";
-            label3.Size = new Size(54, 25);
+            label3.Size = new Size(59, 17);
             label3.TabIndex = 7;
-            label3.Text = "Email";
+            label3.Text = "Email:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(350, 80);
+            label4.ForeColor = Color.FromArgb(64, 0, 0);
+            label4.Location = new Point(35, 113);
             label4.Name = "label4";
-            label4.Size = new Size(79, 25);
+            label4.Size = new Size(96, 17);
             label4.TabIndex = 8;
-            label4.Text = "Telefono";
-            // 
-            // btnAlta
-            // 
-            btnAlta.Location = new Point(129, 132);
-            btnAlta.Name = "btnAlta";
-            btnAlta.Size = new Size(112, 51);
-            btnAlta.TabIndex = 9;
-            btnAlta.Text = "Agregar";
-            btnAlta.UseVisualStyleBackColor = true;
-            btnAlta.Click += btnAlta_Click;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Location = new Point(316, 132);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(112, 51);
-            btnModificar.TabIndex = 10;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(492, 132);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(112, 51);
-            btnEliminar.TabIndex = 11;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
+            label4.Text = "Telefono:";
             // 
             // dgvClientes
             // 
+            dataGridViewCellStyle6.BackColor = Color.SeaShell;
+            dataGridViewCellStyle6.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dgvClientes.BackgroundColor = Color.SeaShell;
+            dgvClientes.BorderStyle = BorderStyle.Fixed3D;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(32, 222);
+            dgvClientes.Location = new Point(35, 291);
+            dgvClientes.Margin = new Padding(3, 2, 3, 2);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.RowHeadersWidth = 62;
-            dgvClientes.Size = new Size(711, 204);
+            dgvClientes.Size = new Size(1078, 370);
             dgvClientes.TabIndex = 12;
             dgvClientes.SelectionChanged += dgvClientes_SelectionChanged;
             // 
-            // groupBox1
+            // btnAlta
             // 
-            groupBox1.Controls.Add(txtNombre);
-            groupBox1.Controls.Add(txtApellido);
-            groupBox1.Controls.Add(btnEliminar);
-            groupBox1.Controls.Add(txtEmail);
-            groupBox1.Controls.Add(btnModificar);
-            groupBox1.Controls.Add(txtTelefono);
-            groupBox1.Controls.Add(btnAlta);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(32, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(711, 195);
-            groupBox1.TabIndex = 13;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Clientes";
+            btnAlta.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAlta.BackColor = Color.RosyBrown;
+            btnAlta.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnAlta.FlatAppearance.BorderSize = 3;
+            btnAlta.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnAlta.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnAlta.FlatStyle = FlatStyle.Popup;
+            btnAlta.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAlta.ForeColor = SystemColors.ControlLightLight;
+            btnAlta.Location = new Point(35, 196);
+            btnAlta.Margin = new Padding(3, 2, 3, 2);
+            btnAlta.Name = "btnAlta";
+            btnAlta.Size = new Size(228, 43);
+            btnAlta.TabIndex = 24;
+            btnAlta.Text = "AGREGAR";
+            btnAlta.UseVisualStyleBackColor = false;
+            // 
+            // btnModificar
+            // 
+            btnModificar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnModificar.BackColor = Color.Bisque;
+            btnModificar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnModificar.FlatAppearance.BorderSize = 3;
+            btnModificar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnModificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnModificar.FlatStyle = FlatStyle.Popup;
+            btnModificar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnModificar.ForeColor = Color.FromArgb(64, 0, 0);
+            btnModificar.Location = new Point(459, 195);
+            btnModificar.Margin = new Padding(3, 2, 3, 2);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(240, 43);
+            btnModificar.TabIndex = 28;
+            btnModificar.Text = "MODIFICAR";
+            btnModificar.UseVisualStyleBackColor = false;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEliminar.BackColor = Color.Black;
+            btnEliminar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnEliminar.FlatAppearance.BorderSize = 3;
+            btnEliminar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnEliminar.FlatStyle = FlatStyle.Popup;
+            btnEliminar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.ForeColor = SystemColors.ControlLightLight;
+            btnEliminar.Location = new Point(885, 194);
+            btnEliminar.Margin = new Padding(3, 2, 3, 2);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(228, 43);
+            btnEliminar.TabIndex = 29;
+            btnEliminar.Text = "ELIMINAR";
+            btnEliminar.UseVisualStyleBackColor = false;
             // 
             // FormClientes
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(11F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(groupBox1);
+            BackColor = SystemColors.ScrollBar;
+            ClientSize = new Size(1164, 678);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnModificar);
+            Controls.Add(btnAlta);
+            Controls.Add(txtApellido);
+            Controls.Add(txtEmail);
+            Controls.Add(txtTelefono);
+            Controls.Add(txtNombre);
+            Controls.Add(label4);
             Controls.Add(dgvClientes);
+            Controls.Add(label3);
+            Controls.Add(label1);
+            Controls.Add(label2);
+            Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormClientes";
-            Text = "FormClientes";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "CLIENTES - ATELIER SARKANY";
             Load += FormClientes_Load;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -195,10 +242,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private Button btnAlta;
-        private Button btnModificar;
-        private Button btnEliminar;
         private DataGridView dgvClientes;
-        private GroupBox groupBox1;
     }
 }

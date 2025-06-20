@@ -14,14 +14,23 @@ Desarrollado en Visual Studio con C# y arquitectura en capas.
 
 ## 🧑‍💻 Autores
 
-- Monik Gutierrez (Coordinadora)
-- [Agregá tus compañeros acá]
+- Monik Gutierrez (Scrum Master, Líder DEV, Analista Funcional, Tester)
+- Cynthia Della Maggiora (Project Manager, Analista Funcional, Diseñadora)
+- Micaela Barrau (Product owner, Analista Funcional, DEV, Tester)
 
 ## 🚀 Cómo ejecutar el proyecto
 
 1. Cloná este repositorio
 2. Abrí el archivo `.sln` en Visual Studio
 3. Ejecutá el proyecto desde el botón "Iniciar"
+
+## 🚀 Cómo conectar la BD
+
+1. Buscá el script en la carpeta
+2. Ejecutá el mismo
+3. Buscá el nombre de la cadena de la base de datos que creaste
+4. Modificá en el proyecto UI, APP.CONFIG y reemplazalo por tu cadena de conexión
+5. Ejecutá el programa y usalo
 
 ## 📦 Tecnologías usadas
 

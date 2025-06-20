@@ -70,6 +70,16 @@ namespace UI
             FormStock form = new FormStock();
             form.ShowDialog();
         }
+
+        private void btnStock_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPagos_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            Button btnConfirmar;
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -40,136 +42,183 @@
             dtpFechaExpiracion = new DateTimePicker();
             txtMonto = new TextBox();
             cmbEstado = new ComboBox();
-            btnConfirmar = new Button();
             dgvReservas = new DataGridView();
+            btnConfirmar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvReservas).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 9);
+            label1.Font = new Font("Copperplate Gothic Light", 12F);
+            label1.ForeColor = Color.FromArgb(64, 0, 0);
+            label1.Location = new Point(32, 22);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(65, 25);
+            label1.Size = new Size(79, 17);
             label1.TabIndex = 0;
-            label1.Text = "Cliente";
+            label1.Text = "Cliente:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 56);
+            label2.Font = new Font("Copperplate Gothic Light", 12F);
+            label2.ForeColor = Color.FromArgb(64, 0, 0);
+            label2.Location = new Point(32, 51);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(161, 25);
+            label2.Size = new Size(79, 17);
             label2.TabIndex = 1;
-            label2.Text = "Vestido Disponible";
+            label2.Text = "Vestido:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 103);
+            label3.Font = new Font("Copperplate Gothic Light", 12F);
+            label3.ForeColor = Color.FromArgb(64, 0, 0);
+            label3.Location = new Point(37, 81);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(122, 25);
+            label3.Size = new Size(141, 17);
             label3.TabIndex = 2;
-            label3.Text = "Fecha Reserva";
+            label3.Text = "Fecha Reserva:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(40, 156);
+            label4.Font = new Font("Copperplate Gothic Light", 12F);
+            label4.ForeColor = Color.FromArgb(64, 0, 0);
+            label4.Location = new Point(32, 114);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(142, 25);
+            label4.Size = new Size(162, 17);
             label4.TabIndex = 3;
-            label4.Text = "Fecha Expiracion";
+            label4.Text = "Fecha Expiracion:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(40, 206);
+            label5.Font = new Font("Copperplate Gothic Light", 12F);
+            label5.ForeColor = Color.FromArgb(64, 0, 0);
+            label5.Location = new Point(35, 182);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(153, 25);
+            label5.Size = new Size(71, 17);
             label5.TabIndex = 4;
-            label5.Text = "Monto Reservado";
+            label5.Text = "Monto:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(40, 250);
+            label6.Font = new Font("Copperplate Gothic Light", 12F);
+            label6.ForeColor = Color.FromArgb(64, 0, 0);
+            label6.Location = new Point(35, 147);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(66, 25);
+            label6.Size = new Size(76, 17);
             label6.TabIndex = 5;
-            label6.Text = "Estado";
+            label6.Text = "Estado:";
             // 
             // cmbClientes
             // 
+            cmbClientes.ForeColor = Color.FromArgb(64, 0, 0);
             cmbClientes.FormattingEnabled = true;
-            cmbClientes.Location = new Point(207, 6);
+            cmbClientes.Location = new Point(222, 18);
+            cmbClientes.Margin = new Padding(2);
             cmbClientes.Name = "cmbClientes";
-            cmbClientes.Size = new Size(182, 33);
+            cmbClientes.Size = new Size(499, 20);
             cmbClientes.TabIndex = 7;
             // 
             // cmbVestidos
             // 
+            cmbVestidos.ForeColor = Color.FromArgb(64, 0, 0);
             cmbVestidos.FormattingEnabled = true;
-            cmbVestidos.Location = new Point(207, 48);
+            cmbVestidos.Location = new Point(222, 47);
+            cmbVestidos.Margin = new Padding(2);
             cmbVestidos.Name = "cmbVestidos";
-            cmbVestidos.Size = new Size(182, 33);
+            cmbVestidos.Size = new Size(499, 20);
             cmbVestidos.TabIndex = 8;
             // 
             // dtpFechaReserva
             // 
-            dtpFechaReserva.Location = new Point(207, 97);
+            dtpFechaReserva.Location = new Point(222, 78);
+            dtpFechaReserva.Margin = new Padding(2);
             dtpFechaReserva.Name = "dtpFechaReserva";
-            dtpFechaReserva.Size = new Size(334, 31);
+            dtpFechaReserva.Size = new Size(499, 21);
             dtpFechaReserva.TabIndex = 9;
             // 
             // dtpFechaExpiracion
             // 
-            dtpFechaExpiracion.Location = new Point(207, 156);
+            dtpFechaExpiracion.Location = new Point(222, 110);
+            dtpFechaExpiracion.Margin = new Padding(2);
             dtpFechaExpiracion.Name = "dtpFechaExpiracion";
-            dtpFechaExpiracion.Size = new Size(334, 31);
+            dtpFechaExpiracion.Size = new Size(499, 21);
             dtpFechaExpiracion.TabIndex = 10;
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(207, 200);
+            txtMonto.ForeColor = Color.FromArgb(64, 0, 0);
+            txtMonto.Location = new Point(222, 178);
+            txtMonto.Margin = new Padding(2);
             txtMonto.Name = "txtMonto";
-            txtMonto.Size = new Size(150, 31);
+            txtMonto.Size = new Size(121, 21);
             txtMonto.TabIndex = 11;
             // 
             // cmbEstado
             // 
+            cmbEstado.ForeColor = Color.FromArgb(64, 0, 0);
             cmbEstado.FormattingEnabled = true;
-            cmbEstado.Location = new Point(207, 247);
+            cmbEstado.Location = new Point(222, 143);
+            cmbEstado.Margin = new Padding(2);
             cmbEstado.Name = "cmbEstado";
-            cmbEstado.Size = new Size(182, 33);
+            cmbEstado.Size = new Size(147, 20);
             cmbEstado.TabIndex = 12;
-            // 
-            // btnConfirmar
-            // 
-            btnConfirmar.Location = new Point(207, 286);
-            btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(112, 34);
-            btnConfirmar.TabIndex = 13;
-            btnConfirmar.Text = "Confirmar";
-            btnConfirmar.UseVisualStyleBackColor = true;
-            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // dgvReservas
             // 
+            dataGridViewCellStyle2.BackColor = Color.SeaShell;
+            dataGridViewCellStyle2.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.SeaShell;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvReservas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dgvReservas.BackgroundColor = Color.SeaShell;
+            dgvReservas.BorderStyle = BorderStyle.Fixed3D;
             dgvReservas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReservas.Location = new Point(32, 326);
+            dgvReservas.Location = new Point(37, 235);
+            dgvReservas.Margin = new Padding(2);
             dgvReservas.Name = "dgvReservas";
             dgvReservas.RowHeadersWidth = 62;
-            dgvReservas.Size = new Size(707, 225);
+            dgvReservas.Size = new Size(689, 346);
             dgvReservas.TabIndex = 14;
+            // 
+            // btnConfirmar
+            // 
+            btnConfirmar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnConfirmar.BackColor = Color.RosyBrown;
+            btnConfirmar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnConfirmar.FlatAppearance.BorderSize = 3;
+            btnConfirmar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnConfirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnConfirmar.FlatStyle = FlatStyle.Popup;
+            btnConfirmar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmar.ForeColor = SystemColors.ControlLightLight;
+            btnConfirmar.Location = new Point(529, 175);
+            btnConfirmar.Margin = new Padding(2);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(192, 24);
+            btnConfirmar.TabIndex = 25;
+            btnConfirmar.Text = "CONFIRMAR";
+            btnConfirmar.UseVisualStyleBackColor = false;
             // 
             // FormReservas
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 574);
-            Controls.Add(dgvReservas);
+            BackColor = SystemColors.ScrollBar;
+            ClientSize = new Size(770, 592);
             Controls.Add(btnConfirmar);
+            Controls.Add(dgvReservas);
             Controls.Add(cmbEstado);
             Controls.Add(txtMonto);
             Controls.Add(dtpFechaExpiracion);
@@ -182,8 +231,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Margin = new Padding(2);
             Name = "FormReservas";
-            Text = "FormReservas";
+            Text = "RESERVAS - ATELIER SARKANY";
             Load += FormReservas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvReservas).EndInit();
             ResumeLayout(false);
@@ -205,7 +257,6 @@
         private DateTimePicker dtpFechaExpiracion;
         private TextBox txtMonto;
         private ComboBox cmbEstado;
-        private Button btnConfirmar;
         private DataGridView dgvReservas;
     }
 }

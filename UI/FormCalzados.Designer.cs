@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Button btnEliminar;
+            Button btnModificar;
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            Button btnAgregar;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCalzados));
             txtIdCalzado = new TextBox();
             txtStockMinimo = new TextBox();
             txtCategoria = new TextBox();
@@ -51,235 +56,333 @@
             label10 = new Label();
             label11 = new Label();
             dgvCalzados = new DataGridView();
-            btnAgregar = new Button();
-            btnModificar = new Button();
             btnEliminar = new Button();
+            btnModificar = new Button();
+            btnAgregar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCalzados).BeginInit();
             SuspendLayout();
             // 
+            // btnEliminar
+            // 
+            btnEliminar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEliminar.BackColor = Color.Black;
+            btnEliminar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnEliminar.FlatAppearance.BorderSize = 3;
+            btnEliminar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnEliminar.FlatStyle = FlatStyle.Popup;
+            btnEliminar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEliminar.ForeColor = SystemColors.ControlLightLight;
+            btnEliminar.Location = new Point(745, 516);
+            btnEliminar.Margin = new Padding(2);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(201, 29);
+            btnEliminar.TabIndex = 26;
+            btnEliminar.Text = "ELIMINAR";
+            btnEliminar.UseVisualStyleBackColor = false;
+            // 
+            // btnModificar
+            // 
+            btnModificar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnModificar.BackColor = Color.Bisque;
+            btnModificar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnModificar.FlatAppearance.BorderSize = 3;
+            btnModificar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnModificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnModificar.FlatStyle = FlatStyle.Popup;
+            btnModificar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnModificar.ForeColor = Color.FromArgb(64, 0, 0);
+            btnModificar.Location = new Point(383, 515);
+            btnModificar.Margin = new Padding(2);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(201, 29);
+            btnModificar.TabIndex = 27;
+            btnModificar.Text = "MODIFICAR";
+            btnModificar.UseVisualStyleBackColor = false;
+            // 
             // txtIdCalzado
             // 
-            txtIdCalzado.Location = new Point(140, 15);
+            txtIdCalzado.BackColor = Color.SeaShell;
+            txtIdCalzado.ForeColor = Color.FromArgb(64, 0, 0);
+            txtIdCalzado.Location = new Point(146, 11);
+            txtIdCalzado.Margin = new Padding(2);
             txtIdCalzado.Name = "txtIdCalzado";
-            txtIdCalzado.Size = new Size(150, 31);
+            txtIdCalzado.Size = new Size(121, 21);
             txtIdCalzado.TabIndex = 0;
             // 
             // txtStockMinimo
             // 
-            txtStockMinimo.Location = new Point(140, 385);
+            txtStockMinimo.BackColor = Color.SeaShell;
+            txtStockMinimo.ForeColor = Color.FromArgb(64, 0, 0);
+            txtStockMinimo.Location = new Point(147, 196);
+            txtStockMinimo.Margin = new Padding(2);
             txtStockMinimo.Name = "txtStockMinimo";
-            txtStockMinimo.Size = new Size(150, 31);
+            txtStockMinimo.Size = new Size(121, 21);
             txtStockMinimo.TabIndex = 1;
             // 
             // txtCategoria
             // 
-            txtCategoria.Location = new Point(140, 348);
+            txtCategoria.BackColor = Color.SeaShell;
+            txtCategoria.ForeColor = Color.FromArgb(64, 0, 0);
+            txtCategoria.Location = new Point(544, 123);
+            txtCategoria.Margin = new Padding(2);
             txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(150, 31);
+            txtCategoria.Size = new Size(402, 21);
             txtCategoria.TabIndex = 2;
             // 
             // txtNumero
             // 
-            txtNumero.Location = new Point(140, 311);
+            txtNumero.BackColor = Color.SeaShell;
+            txtNumero.ForeColor = Color.FromArgb(64, 0, 0);
+            txtNumero.Location = new Point(147, 46);
+            txtNumero.Margin = new Padding(2);
             txtNumero.Name = "txtNumero";
-            txtNumero.Size = new Size(150, 31);
+            txtNumero.Size = new Size(121, 21);
             txtNumero.TabIndex = 3;
             // 
             // txtStock
             // 
-            txtStock.Location = new Point(140, 274);
+            txtStock.BackColor = Color.SeaShell;
+            txtStock.ForeColor = Color.FromArgb(64, 0, 0);
+            txtStock.Location = new Point(146, 161);
+            txtStock.Margin = new Padding(2);
             txtStock.Name = "txtStock";
-            txtStock.Size = new Size(150, 31);
+            txtStock.Size = new Size(121, 21);
             txtStock.TabIndex = 4;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(140, 237);
+            txtPrecio.BackColor = Color.SeaShell;
+            txtPrecio.ForeColor = Color.FromArgb(64, 0, 0);
+            txtPrecio.Location = new Point(147, 123);
+            txtPrecio.Margin = new Padding(2);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(150, 31);
+            txtPrecio.Size = new Size(121, 21);
             txtPrecio.TabIndex = 5;
             // 
             // txtTemporada
             // 
-            txtTemporada.Location = new Point(140, 200);
+            txtTemporada.BackColor = Color.SeaShell;
+            txtTemporada.ForeColor = Color.FromArgb(64, 0, 0);
+            txtTemporada.Location = new Point(544, 161);
+            txtTemporada.Margin = new Padding(2);
             txtTemporada.Name = "txtTemporada";
-            txtTemporada.Size = new Size(150, 31);
+            txtTemporada.Size = new Size(402, 21);
             txtTemporada.TabIndex = 6;
             // 
             // txtColor
             // 
-            txtColor.Location = new Point(140, 163);
+            txtColor.BackColor = Color.SeaShell;
+            txtColor.ForeColor = Color.FromArgb(64, 0, 0);
+            txtColor.Location = new Point(147, 83);
+            txtColor.Margin = new Padding(2);
             txtColor.Name = "txtColor";
-            txtColor.Size = new Size(150, 31);
+            txtColor.Size = new Size(121, 21);
             txtColor.TabIndex = 7;
             // 
             // txtModelo
             // 
-            txtModelo.Location = new Point(140, 126);
+            txtModelo.BackColor = Color.SeaShell;
+            txtModelo.ForeColor = Color.FromArgb(64, 0, 0);
+            txtModelo.Location = new Point(544, 86);
+            txtModelo.Margin = new Padding(2);
             txtModelo.Name = "txtModelo";
-            txtModelo.Size = new Size(150, 31);
+            txtModelo.Size = new Size(402, 21);
             txtModelo.TabIndex = 8;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(140, 89);
+            txtDescripcion.BackColor = Color.SeaShell;
+            txtDescripcion.ForeColor = Color.FromArgb(64, 0, 0);
+            txtDescripcion.Location = new Point(544, 48);
+            txtDescripcion.Margin = new Padding(2);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(150, 31);
+            txtDescripcion.Size = new Size(402, 21);
             txtDescripcion.TabIndex = 9;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(140, 52);
+            txtNombre.BackColor = Color.SeaShell;
+            txtNombre.ForeColor = Color.FromArgb(64, 0, 0);
+            txtNombre.Location = new Point(544, 11);
+            txtNombre.Margin = new Padding(2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(150, 31);
+            txtNombre.Size = new Size(402, 21);
             txtNombre.TabIndex = 10;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(26, 15);
+            label1.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(114, 13);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(98, 25);
+            label1.Size = new Size(30, 17);
             label1.TabIndex = 11;
-            label1.Text = "ID Calzado";
+            label1.Text = "ID:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 58);
+            label2.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(64, 0, 0);
+            label2.Location = new Point(461, 13);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(78, 25);
+            label2.Size = new Size(79, 17);
             label2.TabIndex = 12;
-            label2.Text = "Nombre";
+            label2.Text = "Nombre:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 95);
+            label3.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(64, 0, 0);
+            label3.Location = new Point(422, 50);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(104, 25);
+            label3.Size = new Size(118, 17);
             label3.TabIndex = 13;
-            label3.Text = "Descripcion";
+            label3.Text = "Descripcion:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(26, 132);
+            label4.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(64, 0, 0);
+            label4.Location = new Point(459, 88);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(74, 25);
+            label4.Size = new Size(81, 17);
             label4.TabIndex = 14;
-            label4.Text = "Modelo";
+            label4.Text = "Modelo:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(26, 203);
+            label5.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(64, 0, 0);
+            label5.Location = new Point(432, 163);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(101, 25);
+            label5.Size = new Size(108, 17);
             label5.TabIndex = 15;
-            label5.Text = "Temporada";
+            label5.Text = "Temporada:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(26, 243);
+            label6.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(71, 124);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(60, 25);
+            label6.Size = new Size(71, 17);
             label6.TabIndex = 16;
-            label6.Text = "Precio";
+            label6.Text = "Precio:";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(26, 280);
+            label7.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(77, 162);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(55, 25);
+            label7.Size = new Size(66, 17);
             label7.TabIndex = 17;
-            label7.Text = "Stock";
+            label7.Text = "Stock:";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(26, 317);
+            label8.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(64, 47);
+            label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
-            label8.Size = new Size(77, 25);
+            label8.Size = new Size(79, 17);
             label8.TabIndex = 18;
-            label8.Text = "Numero";
+            label8.Text = "Numero:";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(26, 354);
+            label9.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.FromArgb(64, 0, 0);
+            label9.Location = new Point(438, 125);
+            label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(88, 25);
+            label9.Size = new Size(102, 17);
             label9.TabIndex = 19;
-            label9.Text = "Categoria";
+            label9.Text = "Categoria:";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(26, 169);
+            label10.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(77, 86);
+            label10.Margin = new Padding(2, 0, 2, 0);
             label10.Name = "label10";
-            label10.Size = new Size(55, 25);
+            label10.Size = new Size(69, 17);
             label10.TabIndex = 20;
-            label10.Text = "Color";
+            label10.Text = "Color:";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(26, 391);
+            label11.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(17, 200);
+            label11.Margin = new Padding(2, 0, 2, 0);
             label11.Name = "label11";
-            label11.Size = new Size(115, 25);
+            label11.Size = new Size(127, 17);
             label11.TabIndex = 21;
-            label11.Text = "Stock Minino";
+            label11.Text = "Stock Minino:";
             // 
             // dgvCalzados
             // 
+            dataGridViewCellStyle1.BackColor = Color.SeaShell;
+            dataGridViewCellStyle1.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvCalzados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCalzados.BackgroundColor = Color.SeaShell;
+            dgvCalzados.BorderStyle = BorderStyle.Fixed3D;
             dgvCalzados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCalzados.Location = new Point(309, 15);
+            dgvCalzados.Location = new Point(13, 249);
+            dgvCalzados.Margin = new Padding(2);
             dgvCalzados.Name = "dgvCalzados";
             dgvCalzados.RowHeadersWidth = 62;
-            dgvCalzados.Size = new Size(360, 225);
+            dgvCalzados.Size = new Size(935, 262);
             dgvCalzados.TabIndex = 22;
             dgvCalzados.Click += dgvCalzados_SelectionChanged;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(374, 259);
+            btnAgregar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAgregar.BackColor = Color.RosyBrown;
+            btnAgregar.FlatAppearance.BorderColor = Color.White;
+            btnAgregar.FlatAppearance.BorderSize = 3;
+            btnAgregar.FlatAppearance.MouseDownBackColor = Color.FromArgb(64, 0, 0);
+            btnAgregar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btnAgregar.FlatStyle = FlatStyle.Popup;
+            btnAgregar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregar.ForeColor = SystemColors.ControlLightLight;
+            btnAgregar.Location = new Point(13, 515);
+            btnAgregar.Margin = new Padding(2);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(169, 34);
+            btnAgregar.Size = new Size(201, 29);
             btnAgregar.TabIndex = 23;
-            btnAgregar.Text = "Agregar Calzado";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Text = "AGREGAR";
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnModificar
-            // 
-            btnModificar.Location = new Point(374, 308);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(169, 34);
-            btnModificar.TabIndex = 24;
-            btnModificar.Text = "Modificar Calzado";
-            btnModificar.UseVisualStyleBackColor = true;
-            btnModificar.Click += btnModificar_Click;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.Location = new Point(374, 363);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(169, 34);
-            btnEliminar.TabIndex = 25;
-            btnEliminar.Text = "Eliminar Calzado";
-            btnEliminar.UseVisualStyleBackColor = true;
-            btnEliminar.Click += btnEliminar_Click;
             // 
             // FormCalzados
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnEliminar);
+            BackColor = SystemColors.ScrollBar;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(962, 553);
             Controls.Add(btnModificar);
+            Controls.Add(btnEliminar);
             Controls.Add(btnAgregar);
             Controls.Add(dgvCalzados);
             Controls.Add(label11);
@@ -304,8 +407,14 @@
             Controls.Add(txtCategoria);
             Controls.Add(txtStockMinimo);
             Controls.Add(txtIdCalzado);
+            Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = Color.FromArgb(64, 0, 0);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(2);
             Name = "FormCalzados";
-            Text = "FormCalzados";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "CALZADOS - ATELIER SARKANY";
             Load += FormCalzados_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalzados).EndInit();
             ResumeLayout(false);
@@ -337,8 +446,5 @@
         private Label label10;
         private Label label11;
         private DataGridView dgvCalzados;
-        private Button btnAgregar;
-        private Button btnModificar;
-        private Button btnEliminar;
     }
 }

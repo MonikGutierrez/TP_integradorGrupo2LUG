@@ -75,5 +75,10 @@ namespace UI
             dgvStock.DataSource = null;
             dgvStock.DataSource = business.Listar();
         }
+
+        private void btnLimpiar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,110 +28,167 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Button btnAgregarStock;
+            Button btnLimpiar;
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             cmbTipoProducto = new ComboBox();
             txtDescripcion = new TextBox();
             label3 = new Label();
             txtCantidad = new TextBox();
+            dgvStock = new DataGridView();
             btnAgregarStock = new Button();
             btnLimpiar = new Button();
-            dgvStock = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvStock).BeginInit();
             SuspendLayout();
+            // 
+            // btnAgregarStock
+            // 
+            btnAgregarStock.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAgregarStock.BackColor = Color.RosyBrown;
+            btnAgregarStock.FlatAppearance.BorderColor = Color.White;
+            btnAgregarStock.FlatAppearance.BorderSize = 3;
+            btnAgregarStock.FlatAppearance.MouseDownBackColor = Color.FromArgb(64, 0, 0);
+            btnAgregarStock.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btnAgregarStock.FlatStyle = FlatStyle.Popup;
+            btnAgregarStock.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAgregarStock.ForeColor = SystemColors.ControlLightLight;
+            btnAgregarStock.Location = new Point(69, 150);
+            btnAgregarStock.Margin = new Padding(2);
+            btnAgregarStock.Name = "btnAgregarStock";
+            btnAgregarStock.Size = new Size(201, 29);
+            btnAgregarStock.TabIndex = 24;
+            btnAgregarStock.Text = "AGREGAR";
+            btnAgregarStock.UseVisualStyleBackColor = false;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLimpiar.BackColor = Color.Black;
+            btnLimpiar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnLimpiar.FlatAppearance.BorderSize = 3;
+            btnLimpiar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnLimpiar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnLimpiar.FlatStyle = FlatStyle.Popup;
+            btnLimpiar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLimpiar.ForeColor = SystemColors.ControlLightLight;
+            btnLimpiar.Location = new Point(449, 150);
+            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(201, 29);
+            btnLimpiar.TabIndex = 30;
+            btnLimpiar.Text = "BORRAR";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click_1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(3, 29);
+            label1.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(64, 0, 0);
+            label1.Location = new Point(11, 17);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(150, 25);
+            label1.Size = new Size(99, 17);
             label1.TabIndex = 0;
-            label1.Text = "Tipo de Producto";
+            label1.Text = "Producto:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 74);
+            label2.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(64, 0, 0);
+            label2.Location = new Point(11, 62);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(104, 25);
+            label2.Size = new Size(118, 17);
             label2.TabIndex = 2;
-            label2.Text = "Descripcion";
+            label2.Text = "Descripcion:";
             // 
             // cmbTipoProducto
             // 
+            cmbTipoProducto.BackColor = Color.SeaShell;
+            cmbTipoProducto.Font = new Font("Copperplate Gothic Light", 12F);
+            cmbTipoProducto.ForeColor = Color.FromArgb(64, 0, 0);
             cmbTipoProducto.FormattingEnabled = true;
-            cmbTipoProducto.Location = new Point(168, 26);
+            cmbTipoProducto.Location = new Point(141, 16);
+            cmbTipoProducto.Margin = new Padding(2);
             cmbTipoProducto.Name = "cmbTipoProducto";
-            cmbTipoProducto.Size = new Size(182, 33);
+            cmbTipoProducto.Size = new Size(509, 25);
             cmbTipoProducto.TabIndex = 3;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(168, 74);
+            txtDescripcion.BackColor = Color.SeaShell;
+            txtDescripcion.Font = new Font("Copperplate Gothic Light", 12F);
+            txtDescripcion.ForeColor = Color.FromArgb(64, 0, 0);
+            txtDescripcion.Location = new Point(141, 61);
+            txtDescripcion.Margin = new Padding(2);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(182, 31);
+            txtDescripcion.Size = new Size(509, 25);
             txtDescripcion.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 128);
+            label3.Font = new Font("Copperplate Gothic Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(64, 0, 0);
+            label3.Location = new Point(11, 112);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(83, 25);
+            label3.Size = new Size(92, 17);
             label3.TabIndex = 5;
-            label3.Text = "Cantidad";
+            label3.Text = "Cantidad:";
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(168, 125);
+            txtCantidad.BackColor = Color.SeaShell;
+            txtCantidad.Font = new Font("Copperplate Gothic Light", 12F);
+            txtCantidad.ForeColor = Color.FromArgb(64, 0, 0);
+            txtCantidad.Location = new Point(141, 107);
+            txtCantidad.Margin = new Padding(2);
             txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(182, 31);
+            txtCantidad.Size = new Size(129, 25);
             txtCantidad.TabIndex = 6;
-            // 
-            // btnAgregarStock
-            // 
-            btnAgregarStock.Location = new Point(34, 173);
-            btnAgregarStock.Name = "btnAgregarStock";
-            btnAgregarStock.Size = new Size(148, 34);
-            btnAgregarStock.TabIndex = 7;
-            btnAgregarStock.Text = "Agregar Stock";
-            btnAgregarStock.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Location = new Point(249, 173);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(148, 34);
-            btnLimpiar.TabIndex = 8;
-            btnLimpiar.Text = "Limpiar Stock";
-            btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // dgvStock
             // 
+            dataGridViewCellStyle1.BackColor = Color.SeaShell;
+            dataGridViewCellStyle1.ForeColor = Color.SeaShell;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvStock.BackgroundColor = Color.SeaShell;
+            dgvStock.BorderStyle = BorderStyle.Fixed3D;
             dgvStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStock.Location = new Point(65, 213);
+            dgvStock.Location = new Point(11, 235);
+            dgvStock.Margin = new Padding(2);
             dgvStock.Name = "dgvStock";
             dgvStock.RowHeadersWidth = 62;
-            dgvStock.Size = new Size(360, 225);
+            dgvStock.Size = new Size(640, 393);
             dgvStock.TabIndex = 9;
             // 
             // FormStock
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dgvStock);
+            BackColor = SystemColors.ScrollBar;
+            ClientSize = new Size(662, 639);
             Controls.Add(btnLimpiar);
             Controls.Add(btnAgregarStock);
+            Controls.Add(dgvStock);
             Controls.Add(txtCantidad);
             Controls.Add(label3);
             Controls.Add(txtDescripcion);
             Controls.Add(cmbTipoProducto);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Margin = new Padding(2);
             Name = "FormStock";
-            Text = "FormStock";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "STOCK - ATELIER SARKANY";
             Load += FormStock_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStock).EndInit();
             ResumeLayout(false);
@@ -146,8 +203,6 @@
         private TextBox txtDescripcion;
         private Label label3;
         private TextBox txtCantidad;
-        private Button btnAgregarStock;
-        private Button btnLimpiar;
         private DataGridView dgvStock;
     }
 }
