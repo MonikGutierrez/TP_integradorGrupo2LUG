@@ -25,8 +25,42 @@ namespace UI
             dgvClientes.DataSource = null;
             dgvClientes.DataSource = clienteBusiness.Listar();
             dgvClientes.ClearSelection();
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            //renombro encabezados
+            dgvClientes.Columns[0].HeaderText = "Código";          // primera columna
+            dgvClientes.Columns[dgvClientes.Columns.Count - 1].HeaderText = "Fecha Registro"; // última
+
+            // Selecciona siempre la fila completa al hacer clic en cualquier celda
+            this.dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Desactivo que se puedan seleccionar varias filas a la vez
+            this.dgvClientes.MultiSelect = false;
+
+            // Fuerza Courier New en todas las celdas (filas pares e impares)
+            this.dgvClientes.DefaultCellStyle.Font =
+                new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular,
+                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvClientes.AlternatingRowsDefaultCellStyle.Font =
+                new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular,
+                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            // --- Selección con mismo resaltado en TODAS las filas ---
+            dgvClientes.RowsDefaultCellStyle.SelectionBackColor = Color.Silver;
+            dgvClientes.RowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvClientes.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.Silver;
+            dgvClientes.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 0, 0);
+
+            // Fuerza Courier New en encabezados
+            this.dgvClientes.ColumnHeadersDefaultCellStyle.Font =
+                new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold,
+                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
         }
 
+        #region ABM + Clean
         private void btnAlta_Click(object sender, EventArgs e)
         {
             try
@@ -95,6 +129,11 @@ namespace UI
             }
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
         private void dgvClientes_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvClientes.SelectedRows.Count > 0)
@@ -107,6 +146,8 @@ namespace UI
             }
         }
 
+        #endregion
+
         private void LimpiarCampos()
         {
             txtNombre.Text = "";
@@ -115,5 +156,7 @@ namespace UI
             txtTelefono.Text = "";
             clienteSeleccionado = null;
         }
+
+
     }
 }

@@ -5,24 +5,21 @@ namespace UI
 {
     public partial class FormPrincipal : Form
     {
+        //declaro mi banner
+        private System.Windows.Forms.PictureBox pictureBoxBanner;
         public FormPrincipal()
         {
             InitializeComponent();
-            Load += FormPrincipal_Load;
-            btnClientes.Click += btnClientes_Click;
-            btnVestidos.Click += btnVestidos_Click;
-            btnCalzado.Click += btnCalzados_Click;
-            btnVentas.Click += btnVentas_Click;
-            btnReservas.Click += btnReservas_Click;
-            btnCitas.Click += btnCitas_Click;
-            btnPagos.Click += btnPagos_Click;
+
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            // Código opcional al cargar la app
+            
         }
 
+
+        #region botonera
         private void btnClientes_Click(object sender, EventArgs e)
         {
             FormClientes form = new FormClientes();
@@ -71,20 +68,46 @@ namespace UI
             form.ShowDialog();
         }
 
-        private void btnStock_Click_1(object sender, EventArgs e)
-        {
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Confirmación de salida
+                var respuesta = MessageBox.Show(
+                    "¿Estás seguro que deseas salir de la aplicación?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    // Cierra todos los formularios y termina la aplicación
+                    MessageBox.Show(
+                    "Cerrando la aplicación"
+                );
+                    Application.Exit();
+                }
+            }
+            catch (Exception ex)
+            {
+                // En caso de error inesperado, muestro un mensaje amable
+                MessageBox.Show(
+                    "Ocurrió un error al intentar salir:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+            }
         }
 
-        private void btnPagos_Click_1(object sender, EventArgs e)
-        {
+        #endregion
 
-        }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
     }
+
 
 }

@@ -10,7 +10,7 @@ Desarrollado en Visual Studio con C# y arquitectura en capas.
 - **DAL**: Acceso a datos
 - **Entity**: Entidades y modelos
 - **MPP**: Mapeo entre capas
-- **Abstracciones**: Interfaces y abstracciones
+
 
 ## 🧑‍💻 Autores
 

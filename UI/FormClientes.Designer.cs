@@ -31,7 +31,8 @@
             Button btnAlta;
             Button btnModificar;
             Button btnEliminar;
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            Button btnLimpiar;
             txtNombre = new TextBox();
             txtApellido = new TextBox();
             txtEmail = new TextBox();
@@ -46,6 +47,7 @@
             btnAlta = new Button();
             btnModificar = new Button();
             btnEliminar = new Button();
+            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -61,7 +63,7 @@
             btnAlta.FlatStyle = FlatStyle.Popup;
             btnAlta.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAlta.ForeColor = SystemColors.ControlLightLight;
-            btnAlta.Location = new Point(295, 189);
+            btnAlta.Location = new Point(221, 189);
             btnAlta.Margin = new Padding(3, 2, 3, 2);
             btnAlta.Name = "btnAlta";
             btnAlta.Size = new Size(152, 32);
@@ -81,7 +83,7 @@
             btnModificar.FlatStyle = FlatStyle.Popup;
             btnModificar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnModificar.ForeColor = Color.FromArgb(64, 0, 0);
-            btnModificar.Location = new Point(468, 189);
+            btnModificar.Location = new Point(394, 189);
             btnModificar.Margin = new Padding(3, 2, 3, 2);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(152, 32);
@@ -101,7 +103,7 @@
             btnEliminar.FlatStyle = FlatStyle.Popup;
             btnEliminar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = SystemColors.ControlLightLight;
-            btnEliminar.Location = new Point(639, 189);
+            btnEliminar.Location = new Point(565, 189);
             btnEliminar.Margin = new Padding(3, 2, 3, 2);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(152, 32);
@@ -196,11 +198,11 @@
             // 
             // dgvClientes
             // 
-            dataGridViewCellStyle3.BackColor = Color.SeaShell;
-            dataGridViewCellStyle3.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(64, 0, 0);
-            dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = Color.SeaShell;
+            dataGridViewCellStyle2.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvClientes.BackgroundColor = Color.SeaShell;
             dgvClientes.BorderStyle = BorderStyle.Fixed3D;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -215,6 +217,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnLimpiar);
             groupBox1.Controls.Add(btnEliminar);
             groupBox1.Controls.Add(btnModificar);
             groupBox1.Controls.Add(btnAlta);
@@ -245,6 +248,26 @@
             label5.Size = new Size(129, 12);
             label5.TabIndex = 31;
             label5.Text = "Listado de clientes";
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLimpiar.BackColor = Color.SeaShell;
+            btnLimpiar.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnLimpiar.FlatAppearance.BorderSize = 3;
+            btnLimpiar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnLimpiar.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnLimpiar.FlatStyle = FlatStyle.Popup;
+            btnLimpiar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLimpiar.ForeColor = Color.FromArgb(64, 0, 0);
+            btnLimpiar.Location = new Point(740, 189);
+            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(152, 32);
+            btnLimpiar.TabIndex = 30;
+            btnLimpiar.Text = "LIMPIAR";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // FormClientes
             // 

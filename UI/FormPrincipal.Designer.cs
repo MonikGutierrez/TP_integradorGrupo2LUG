@@ -38,10 +38,10 @@
             btnPagos = new Button();
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnSalir = new Button();
             panel1 = new Panel();
-            pictureBoxLogo = new PictureBox();
             label2 = new Label();
-            button1 = new Button();
+            pictureBoxLogo = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
@@ -52,6 +52,8 @@
             btnClientes.BackColor = Color.RosyBrown;
             btnClientes.Font = new Font("Copperplate Gothic Bold", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClientes.ForeColor = Color.FromArgb(64, 0, 0);
+            btnClientes.Image = Properties.Resources.user3;
+            btnClientes.ImageAlign = ContentAlignment.TopCenter;
             btnClientes.Location = new Point(2, 2);
             btnClientes.Margin = new Padding(2);
             btnClientes.Name = "btnClientes";
@@ -59,13 +61,17 @@
             btnClientes.TabIndex = 0;
             btnClientes.Text = "CLIENTES";
             btnClientes.TextAlign = ContentAlignment.BottomCenter;
+            btnClientes.TextImageRelation = TextImageRelation.ImageAboveText;
             btnClientes.UseVisualStyleBackColor = false;
+            btnClientes.Click += btnClientes_Click;
             // 
             // btnVestidos
             // 
             btnVestidos.BackColor = Color.Silver;
             btnVestidos.Font = new Font("Copperplate Gothic Bold", 27.75F);
             btnVestidos.ForeColor = Color.FromArgb(64, 0, 0);
+            btnVestidos.Image = Properties.Resources.vestidos1;
+            btnVestidos.ImageAlign = ContentAlignment.TopCenter;
             btnVestidos.Location = new Point(290, 2);
             btnVestidos.Margin = new Padding(2);
             btnVestidos.Name = "btnVestidos";
@@ -80,6 +86,8 @@
             btnCalzado.BackColor = Color.FromArgb(64, 0, 0);
             btnCalzado.Font = new Font("Copperplate Gothic Bold", 27.75F);
             btnCalzado.ForeColor = Color.SeaShell;
+            btnCalzado.Image = Properties.Resources.zapatos;
+            btnCalzado.ImageAlign = ContentAlignment.TopCenter;
             btnCalzado.Location = new Point(576, 2);
             btnCalzado.Margin = new Padding(2);
             btnCalzado.Name = "btnCalzado";
@@ -94,7 +102,9 @@
             btnReservas.BackColor = Color.RosyBrown;
             btnReservas.Font = new Font("Copperplate Gothic Bold", 27.75F);
             btnReservas.ForeColor = Color.FromArgb(64, 0, 0);
-            btnReservas.Location = new Point(290, 178);
+            btnReservas.Image = Properties.Resources.reservas;
+            btnReservas.ImageAlign = ContentAlignment.TopCenter;
+            btnReservas.Location = new Point(290, 185);
             btnReservas.Margin = new Padding(2);
             btnReservas.Name = "btnReservas";
             btnReservas.Size = new Size(276, 172);
@@ -108,7 +118,9 @@
             btnCitas.BackColor = Color.FromArgb(64, 0, 0);
             btnCitas.Font = new Font("Copperplate Gothic Bold", 27.75F);
             btnCitas.ForeColor = Color.SeaShell;
-            btnCitas.Location = new Point(2, 178);
+            btnCitas.Image = Properties.Resources.citas1;
+            btnCitas.ImageAlign = ContentAlignment.TopCenter;
+            btnCitas.Location = new Point(2, 185);
             btnCitas.Margin = new Padding(2);
             btnCitas.Name = "btnCitas";
             btnCitas.Size = new Size(276, 172);
@@ -122,7 +134,9 @@
             btnVentas.BackColor = Color.Silver;
             btnVentas.Font = new Font("Copperplate Gothic Bold", 27.75F);
             btnVentas.ForeColor = Color.FromArgb(64, 0, 0);
-            btnVentas.Location = new Point(576, 178);
+            btnVentas.Image = Properties.Resources.ventas;
+            btnVentas.ImageAlign = ContentAlignment.TopCenter;
+            btnVentas.Location = new Point(576, 185);
             btnVentas.Margin = new Padding(2);
             btnVentas.Name = "btnVentas";
             btnVentas.Size = new Size(276, 172);
@@ -136,30 +150,33 @@
             btnStock.BackColor = Color.Silver;
             btnStock.Font = new Font("Copperplate Gothic Bold", 27.75F);
             btnStock.ForeColor = Color.FromArgb(64, 0, 0);
-            btnStock.Location = new Point(2, 354);
+            btnStock.Image = Properties.Resources.stock;
+            btnStock.ImageAlign = ContentAlignment.TopCenter;
+            btnStock.Location = new Point(2, 368);
             btnStock.Margin = new Padding(2);
             btnStock.Name = "btnStock";
-            btnStock.Size = new Size(276, 153);
+            btnStock.Size = new Size(276, 172);
             btnStock.TabIndex = 6;
             btnStock.Text = "STOCK";
             btnStock.TextAlign = ContentAlignment.BottomCenter;
             btnStock.UseVisualStyleBackColor = false;
-            btnStock.Click += btnStock_Click_1;
+            btnStock.Click += btnStock_Click;
             // 
             // btnPagos
             // 
             btnPagos.BackColor = Color.FromArgb(64, 0, 0);
-            btnPagos.Font = new Font("Copperplate Gothic Bold", 27.75F);
+            btnPagos.Font = new Font("Copperplate Gothic Bold", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPagos.ForeColor = Color.SeaShell;
-            btnPagos.Location = new Point(290, 354);
+            btnPagos.Image = Properties.Resources.Pagos2;
+            btnPagos.ImageAlign = ContentAlignment.TopCenter;
+            btnPagos.Location = new Point(290, 368);
             btnPagos.Margin = new Padding(2);
             btnPagos.Name = "btnPagos";
-            btnPagos.Size = new Size(276, 153);
+            btnPagos.Size = new Size(276, 172);
             btnPagos.TabIndex = 8;
             btnPagos.Text = "PAGOS";
             btnPagos.TextAlign = ContentAlignment.BottomCenter;
             btnPagos.UseVisualStyleBackColor = false;
-            btnPagos.Click += btnPagos_Click_1;
             // 
             // label1
             // 
@@ -179,7 +196,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.1742172F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.8257828F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 283F));
-            tableLayoutPanel1.Controls.Add(button1, 2, 2);
+            tableLayoutPanel1.Controls.Add(btnSalir, 2, 2);
             tableLayoutPanel1.Controls.Add(btnPagos, 1, 2);
             tableLayoutPanel1.Controls.Add(btnStock, 0, 2);
             tableLayoutPanel1.Controls.Add(btnReservas, 1, 1);
@@ -193,9 +210,26 @@
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 156F));
-            tableLayoutPanel1.Size = new Size(858, 509);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 178F));
+            tableLayoutPanel1.Size = new Size(858, 544);
             tableLayoutPanel1.TabIndex = 8;
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.RosyBrown;
+            btnSalir.Font = new Font("Copperplate Gothic Bold", 27.75F);
+            btnSalir.ForeColor = Color.FromArgb(64, 0, 0);
+            btnSalir.Image = Properties.Resources.salir;
+            btnSalir.ImageAlign = ContentAlignment.TopCenter;
+            btnSalir.Location = new Point(576, 368);
+            btnSalir.Margin = new Padding(2);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(276, 172);
+            btnSalir.TabIndex = 9;
+            btnSalir.Text = "SALIR";
+            btnSalir.TextAlign = ContentAlignment.BottomCenter;
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // panel1
             // 
@@ -207,16 +241,6 @@
             panel1.Size = new Size(870, 100);
             panel1.TabIndex = 9;
             // 
-            // pictureBoxLogo
-            // 
-            pictureBoxLogo.BackColor = Color.SeaShell;
-            pictureBoxLogo.Location = new Point(0, 0);
-            pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(870, 97);
-            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxLogo.TabIndex = 0;
-            pictureBoxLogo.TabStop = false;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -226,30 +250,28 @@
             label2.TabIndex = 1;
             label2.Text = "label2";
             // 
-            // button1
+            // pictureBoxLogo
             // 
-            button1.BackColor = Color.RosyBrown;
-            button1.Font = new Font("Copperplate Gothic Bold", 27.75F);
-            button1.ForeColor = Color.FromArgb(64, 0, 0);
-            button1.Location = new Point(576, 354);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(276, 153);
-            button1.TabIndex = 9;
-            button1.Text = "SALIR";
-            button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.UseVisualStyleBackColor = false;
+            pictureBoxLogo.BackColor = Color.SeaShell;
+            pictureBoxLogo.InitialImage = Properties.Resources.Atelier_sarkany_banner;
+            pictureBoxLogo.Location = new Point(0, 0);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(870, 97);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
             // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(872, 615);
+            ClientSize = new Size(872, 647);
             Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label1);
             Margin = new Padding(2);
             Name = "FormPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Bienvenido a Atelier Sarkany";
             Load += FormPrincipal_Load;
             tableLayoutPanel1.ResumeLayout(false);
@@ -275,6 +297,6 @@
         private Panel panel1;
         private PictureBox pictureBoxLogo;
         private Label label2;
-        private Button button1;
+        private Button btnSalir;
     }
 }
