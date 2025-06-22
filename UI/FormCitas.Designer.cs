@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
+
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Button btnConfirmarCita;
-=======
-           // Button btnConfirmarCita;
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCitas));
             label1 = new Label();
             label2 = new Label();
@@ -46,11 +43,10 @@
             dgvCitas = new DataGridView();
             txtObservaciones = new TextBox();
             btnConfirmarCita = new Button();
-<<<<<<< HEAD
+
             ((System.ComponentModel.ISupportInitialize)dgvCitas).BeginInit();
             SuspendLayout();
-            // 
-=======
+
             btnConfirmarCita.Name = "btnConfirmarCita";
             btnConfirmarCita.Text = "Confirmar Cita";
            // btnConfirmarCita.Click += btnConfirmarCita_Click;
@@ -79,7 +75,7 @@
             btnConfirmarCita.UseVisualStyleBackColor = false;
             btnConfirmarCita.Click += btnConfirmarCita_Click;
             // 
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             // label1
             // 
             label1.AutoSize = true;
@@ -88,11 +84,9 @@
             label1.Location = new Point(30, 23);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-<<<<<<< HEAD
+
             label1.Size = new Size(84, 17);
-=======
-            label1.Size = new Size(124, 26);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             label1.TabIndex = 0;
             label1.Text = "Reserva:";
             // 
@@ -104,11 +98,9 @@
             label2.Location = new Point(30, 65);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-<<<<<<< HEAD
+
             label2.Size = new Size(127, 17);
-=======
-            label2.Size = new Size(191, 26);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             label2.TabIndex = 1;
             label2.Text = "Fecha y Hora:";
             // 
@@ -120,11 +112,9 @@
             label3.Location = new Point(30, 113);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-<<<<<<< HEAD
+
             label3.Size = new Size(76, 17);
-=======
-            label3.Size = new Size(113, 26);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             label3.TabIndex = 2;
             label3.Text = "Estado:";
             // 
@@ -136,11 +126,9 @@
             label4.Location = new Point(30, 153);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-<<<<<<< HEAD
+
             label4.Size = new Size(145, 17);
-=======
-            label4.Size = new Size(217, 26);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             label4.TabIndex = 3;
             label4.Text = "Observaciones:";
             // 
@@ -152,11 +140,9 @@
             cmbReservas.Location = new Point(179, 22);
             cmbReservas.Margin = new Padding(2);
             cmbReservas.Name = "cmbReservas";
-<<<<<<< HEAD
+
             cmbReservas.Size = new Size(401, 20);
-=======
-            cmbReservas.Size = new Size(401, 28);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             cmbReservas.TabIndex = 4;
             // 
             // dtpFechaHora
@@ -165,11 +151,9 @@
             dtpFechaHora.Location = new Point(179, 65);
             dtpFechaHora.Margin = new Padding(2);
             dtpFechaHora.Name = "dtpFechaHora";
-<<<<<<< HEAD
+
             dtpFechaHora.Size = new Size(397, 21);
-=======
-            dtpFechaHora.Size = new Size(397, 27);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             dtpFechaHora.TabIndex = 5;
             dtpFechaHora.ValueChanged += dtpFechaHora_ValueChanged;
             // 
@@ -181,11 +165,9 @@
             cmbEstadoCita.Location = new Point(179, 110);
             cmbEstadoCita.Margin = new Padding(2);
             cmbEstadoCita.Name = "cmbEstadoCita";
-<<<<<<< HEAD
+
             cmbEstadoCita.Size = new Size(397, 20);
-=======
-            cmbEstadoCita.Size = new Size(397, 28);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             cmbEstadoCita.TabIndex = 6;
             // 
             // dgvCitas
@@ -212,7 +194,7 @@
             txtObservaciones.Location = new Point(179, 151);
             txtObservaciones.Margin = new Padding(2);
             txtObservaciones.Name = "txtObservaciones";
-<<<<<<< HEAD
+
             txtObservaciones.Size = new Size(722, 21);
             txtObservaciones.TabIndex = 8;
             // 
@@ -242,17 +224,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(917, 653);
-=======
-            txtObservaciones.Size = new Size(722, 27);
-            txtObservaciones.TabIndex = 8;
-            // 
-            // FormCitas
-            // 
-            AutoScaleDimensions = new SizeF(12F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ScrollBar;
-            ClientSize = new Size(912, 657);
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
+
             Controls.Add(btnConfirmarCita);
             Controls.Add(txtObservaciones);
             Controls.Add(dgvCitas);

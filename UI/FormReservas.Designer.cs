@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             Button btnConfirmar;
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -75,7 +75,7 @@
             label1.Location = new Point(32, 22);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(116, 26);
+            label1.Size = new Size(79, 17);
             label1.TabIndex = 0;
             label1.Text = "Cliente:";
             // 
@@ -87,7 +87,7 @@
             label2.Location = new Point(32, 51);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(118, 26);
+            label2.Size = new Size(79, 17);
             label2.TabIndex = 1;
             label2.Text = "Vestido:";
             // 
@@ -99,7 +99,7 @@
             label3.Location = new Point(37, 81);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(209, 26);
+            label3.Size = new Size(141, 17);
             label3.TabIndex = 2;
             label3.Text = "Fecha Reserva:";
             // 
@@ -111,7 +111,7 @@
             label4.Location = new Point(32, 115);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(243, 26);
+            label4.Size = new Size(162, 17);
             label4.TabIndex = 3;
             label4.Text = "Fecha Expiracion:";
             // 
@@ -123,7 +123,7 @@
             label5.Location = new Point(35, 182);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(107, 26);
+            label5.Size = new Size(71, 17);
             label5.TabIndex = 4;
             label5.Text = "Monto:";
             // 
@@ -135,7 +135,7 @@
             label6.Location = new Point(35, 147);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(113, 26);
+            label6.Size = new Size(76, 17);
             label6.TabIndex = 5;
             label6.Text = "Estado:";
             // 
@@ -146,7 +146,7 @@
             cmbClientes.Location = new Point(222, 18);
             cmbClientes.Margin = new Padding(2);
             cmbClientes.Name = "cmbClientes";
-            cmbClientes.Size = new Size(499, 28);
+            cmbClientes.Size = new Size(499, 20);
             cmbClientes.TabIndex = 7;
             // 
             // cmbVestidos
@@ -156,7 +156,7 @@
             cmbVestidos.Location = new Point(222, 47);
             cmbVestidos.Margin = new Padding(2);
             cmbVestidos.Name = "cmbVestidos";
-            cmbVestidos.Size = new Size(499, 28);
+            cmbVestidos.Size = new Size(499, 20);
             cmbVestidos.TabIndex = 8;
             // 
             // dtpFechaReserva
@@ -164,7 +164,7 @@
             dtpFechaReserva.Location = new Point(222, 78);
             dtpFechaReserva.Margin = new Padding(2);
             dtpFechaReserva.Name = "dtpFechaReserva";
-            dtpFechaReserva.Size = new Size(499, 27);
+            dtpFechaReserva.Size = new Size(499, 21);
             dtpFechaReserva.TabIndex = 9;
             // 
             // dtpFechaExpiracion
@@ -172,7 +172,7 @@
             dtpFechaExpiracion.Location = new Point(222, 110);
             dtpFechaExpiracion.Margin = new Padding(2);
             dtpFechaExpiracion.Name = "dtpFechaExpiracion";
-            dtpFechaExpiracion.Size = new Size(499, 27);
+            dtpFechaExpiracion.Size = new Size(499, 21);
             dtpFechaExpiracion.TabIndex = 10;
             // 
             // txtMonto
@@ -181,7 +181,7 @@
             txtMonto.Location = new Point(222, 178);
             txtMonto.Margin = new Padding(2);
             txtMonto.Name = "txtMonto";
-            txtMonto.Size = new Size(121, 27);
+            txtMonto.Size = new Size(121, 21);
             txtMonto.TabIndex = 11;
             // 
             // cmbEstado
@@ -191,17 +191,17 @@
             cmbEstado.Location = new Point(222, 143);
             cmbEstado.Margin = new Padding(2);
             cmbEstado.Name = "cmbEstado";
-            cmbEstado.Size = new Size(147, 28);
+            cmbEstado.Size = new Size(147, 20);
             cmbEstado.TabIndex = 12;
             // 
             // dgvReservas
             // 
-            dataGridViewCellStyle3.BackColor = Color.SeaShell;
-            dataGridViewCellStyle3.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.SeaShell;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(64, 0, 0);
-            dgvReservas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = Color.SeaShell;
+            dataGridViewCellStyle1.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(64, 0, 0);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvReservas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvReservas.BackgroundColor = Color.SeaShell;
             dgvReservas.BorderStyle = BorderStyle.Fixed3D;
             dgvReservas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -214,7 +214,7 @@
             // 
             // FormReservas
             // 
-            AutoScaleDimensions = new SizeF(12F, 20F);
+            AutoScaleDimensions = new SizeF(8F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(778, 592);

@@ -2,11 +2,7 @@
 
 namespace Entity
 {
-<<<<<<< HEAD
     public abstract class Producto
-=======
-    public class Producto
->>>>>>> da4321917357b2e56e637ebc664ca8595807f68b
     {
         public int Id { get; set; }
         public string TipoProducto { get; set; }
