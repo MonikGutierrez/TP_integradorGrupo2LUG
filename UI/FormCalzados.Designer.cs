@@ -32,6 +32,7 @@
             Button btnModificar;
             Button btnAgregar;
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            Button btnLimpiarCalzado;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCalzados));
             txtIdCalzado = new TextBox();
             txtStockMinimo = new TextBox();
@@ -59,6 +60,7 @@
             btnEliminar = new Button();
             btnModificar = new Button();
             btnAgregar = new Button();
+            btnLimpiarCalzado = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCalzados).BeginInit();
             SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             btnEliminar.FlatStyle = FlatStyle.Popup;
             btnEliminar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminar.ForeColor = SystemColors.ControlLightLight;
-            btnEliminar.Location = new Point(745, 516);
+            btnEliminar.Location = new Point(479, 516);
             btnEliminar.Margin = new Padding(2);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(201, 29);
@@ -93,7 +95,7 @@
             btnModificar.FlatStyle = FlatStyle.Popup;
             btnModificar.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnModificar.ForeColor = Color.FromArgb(64, 0, 0);
-            btnModificar.Location = new Point(383, 515);
+            btnModificar.Location = new Point(248, 516);
             btnModificar.Margin = new Padding(2);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(201, 29);
@@ -388,6 +390,26 @@
             dgvCalzados.TabIndex = 22;
             dgvCalzados.Click += dgvCalzados_SelectionChanged;
             // 
+            // btnLimpiarCalzado
+            // 
+            btnLimpiarCalzado.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLimpiarCalzado.BackColor = Color.SeaShell;
+            btnLimpiarCalzado.FlatAppearance.BorderColor = Color.FromArgb(64, 0, 0);
+            btnLimpiarCalzado.FlatAppearance.BorderSize = 3;
+            btnLimpiarCalzado.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btnLimpiarCalzado.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnLimpiarCalzado.FlatStyle = FlatStyle.Popup;
+            btnLimpiarCalzado.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLimpiarCalzado.ForeColor = Color.FromArgb(64, 0, 0);
+            btnLimpiarCalzado.Location = new Point(724, 516);
+            btnLimpiarCalzado.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiarCalzado.Name = "btnLimpiarCalzado";
+            btnLimpiarCalzado.Size = new Size(152, 32);
+            btnLimpiarCalzado.TabIndex = 31;
+            btnLimpiarCalzado.Text = "LIMPIAR";
+            btnLimpiarCalzado.UseVisualStyleBackColor = false;
+            btnLimpiarCalzado.Click += btnLimpiarCalzado_Click;
+            // 
             // FormCalzados
             // 
             AutoScaleDimensions = new SizeF(8F, 12F);
@@ -395,6 +417,7 @@
             BackColor = SystemColors.ScrollBar;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(975, 569);
+            Controls.Add(btnLimpiarCalzado);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(btnAgregar);

@@ -1,5 +1,4 @@
-﻿// FormCitas.cs (lógica y carga de datos para Citas)
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using BLL;
@@ -16,8 +15,7 @@ namespace UI
         public FormCitas()
         {
             InitializeComponent();
-            //Load += FormCitas_Load;
-            //btnConfirmarCita.Click += btnConfirmarCita_Click;
+
         }
 
         private void FormCitas_Load(object sender, EventArgs e)

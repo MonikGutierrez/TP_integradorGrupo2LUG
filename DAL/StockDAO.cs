@@ -16,7 +16,7 @@ namespace DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Stock (tipoProducto, descripcion, cantidad) VALUES (@tipo, @desc, @cant)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO ControlStock (tipoProducto, descripcion, cantidad) VALUES (@tipo, @desc, @cant)", conn);
 
                 cmd.Parameters.AddWithValue("@tipo", stock.TipoProducto);
                 cmd.Parameters.AddWithValue("@desc", stock.Descripcion);
@@ -32,7 +32,7 @@ namespace DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Stock", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM ControlStock", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 StockMapper mapper = new StockMapper();

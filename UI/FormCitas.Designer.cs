@@ -49,11 +49,9 @@
 
             btnConfirmarCita.Name = "btnConfirmarCita";
             btnConfirmarCita.Text = "Confirmar Cita";
-           // btnConfirmarCita.Click += btnConfirmarCita_Click;
+            // btnConfirmarCita.Click += btnConfirmarCita_Click;
             Controls.Add(btnConfirmarCita);
 
-            ((System.ComponentModel.ISupportInitialize)dgvCitas).BeginInit();
-            SuspendLayout();
             // 
             // btnConfirmarCita
             // 
@@ -248,6 +246,7 @@
             PerformLayout();
         }
 
+
         #endregion
 
         private Label label1;
@@ -260,7 +259,8 @@
         private DataGridView dgvCitas;
         private TextBox txtObservaciones;
         private Button btnConfirmarCita;
-       
+        
 
     }
+    
 }

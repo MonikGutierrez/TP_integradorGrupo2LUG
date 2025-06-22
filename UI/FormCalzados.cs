@@ -151,5 +151,22 @@ namespace UI
             txtStockMinimo.Text = "";
             calzadoSeleccionado = null;
         }
+
+        private void btnLimpiarCalzado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al limpiar los campos",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
     }
 }

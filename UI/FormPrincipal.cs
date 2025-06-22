@@ -15,57 +15,155 @@ namespace UI
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
         #region botonera
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            FormClientes form = new FormClientes();
-            form.ShowDialog();
+            try
+            {
+                using var form = new FormClientes();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Clientes",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
-        private void btnVestidos_Click(object sender, EventArgs e)
+        private void btnVestidos_Click_1(object sender, EventArgs e)
         {
-            FormVestidos form = new FormVestidos();
-            form.ShowDialog();
+            try
+            {
+                FormVestidos form = new FormVestidos();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Vestidos",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+
         }
 
-        private void btnCalzados_Click(object sender, EventArgs e)
+        private void btnCalzado_Click(object sender, EventArgs e)
         {
-            FormCalzados form = new FormCalzados();
-            form.ShowDialog();
+            try
+            {
+                FormCalzados form = new FormCalzados();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Calzado",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
-        private void btnVentas_Click(object sender, EventArgs e)
+        private void btnVentas_Click_1(object sender, EventArgs e)
         {
-            FormVentas form = new FormVentas();
-            form.ShowDialog();
+            try
+            {
+                FormVentas form = new FormVentas();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Ventas",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+    
+
+        private void btnReservas_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                FormReservas form = new FormReservas();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Reservas",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
-        private void btnReservas_Click(object sender, EventArgs e)
+        private void btnCitas_Click_1(object sender, EventArgs e)
         {
-            FormReservas form = new FormReservas();
-            form.ShowDialog();
+            try
+            {
+                using var form = new FormCitas();
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error al abrir Citas:\n{ex.Message}\n\n{ex.StackTrace}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
-        private void btnCitas_Click(object sender, EventArgs e)
+        private void btnPagos_Click_1(object sender, EventArgs e)
         {
-            FormCitas form = new FormCitas();
-            form.ShowDialog();
-        }
-
-        private void btnPagos_Click(object sender, EventArgs e)
-        {
-            FormPagos form = new FormPagos();
-            form.ShowDialog();
+            try
+            {
+                FormPagos form = new FormPagos();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Pagos",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            FormStock form = new FormStock();
-            form.ShowDialog();
+            try
+            {
+                FormStock form = new FormStock();
+                form.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al abrir el formulario de Stock",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
 
@@ -104,6 +202,7 @@ namespace UI
         }
 
         #endregion
+
 
 
 

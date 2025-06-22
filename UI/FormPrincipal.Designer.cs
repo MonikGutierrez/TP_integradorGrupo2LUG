@@ -39,12 +39,9 @@
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             btnSalir = new Button();
-            panel1 = new Panel();
-            label2 = new Label();
-            pictureBoxLogo = new PictureBox();
+            pictureBox1 = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnClientes
@@ -80,6 +77,7 @@
             btnVestidos.Text = "VESTIDOS";
             btnVestidos.TextAlign = ContentAlignment.BottomCenter;
             btnVestidos.UseVisualStyleBackColor = false;
+            btnVestidos.Click += btnVestidos_Click_1;
             // 
             // btnCalzado
             // 
@@ -96,6 +94,7 @@
             btnCalzado.Text = "CALZADOS";
             btnCalzado.TextAlign = ContentAlignment.BottomCenter;
             btnCalzado.UseVisualStyleBackColor = false;
+            btnCalzado.Click += btnCalzado_Click;
             // 
             // btnReservas
             // 
@@ -112,6 +111,7 @@
             btnReservas.Text = "RESERVAS";
             btnReservas.TextAlign = ContentAlignment.BottomCenter;
             btnReservas.UseVisualStyleBackColor = false;
+            btnReservas.Click += btnReservas_Click_1;
             // 
             // btnCitas
             // 
@@ -128,6 +128,8 @@
             btnCitas.Text = "CITAS";
             btnCitas.TextAlign = ContentAlignment.BottomCenter;
             btnCitas.UseVisualStyleBackColor = false;
+            btnCitas.Click += btnCitas_Click_1;
+            
             // 
             // btnVentas
             // 
@@ -144,6 +146,7 @@
             btnVentas.Text = "VENTAS";
             btnVentas.TextAlign = ContentAlignment.BottomCenter;
             btnVentas.UseVisualStyleBackColor = false;
+            btnVentas.Click += btnVentas_Click_1;
             // 
             // btnStock
             // 
@@ -177,6 +180,7 @@
             btnPagos.Text = "PAGOS";
             btnPagos.TextAlign = ContentAlignment.BottomCenter;
             btnPagos.UseVisualStyleBackColor = false;
+            btnPagos.Click += btnPagos_Click_1;
             // 
             // label1
             // 
@@ -231,42 +235,23 @@
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
-            // panel1
+            // pictureBox1
             // 
-            panel1.BackColor = Color.Silver;
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(pictureBoxLogo);
-            panel1.Location = new Point(2, 2);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(870, 100);
-            panel1.TabIndex = 9;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(424, 63);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
-            // 
-            // pictureBoxLogo
-            // 
-            pictureBoxLogo.BackColor = Color.SeaShell;
-            pictureBoxLogo.InitialImage = Properties.Resources.Atelier_sarkany_banner;
-            pictureBoxLogo.Location = new Point(0, 0);
-            pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(870, 97);
-            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxLogo.TabIndex = 0;
-            pictureBoxLogo.TabStop = false;
+            pictureBox1.BackColor = Color.SeaShell;
+            pictureBox1.ErrorImage = null;
+            pictureBox1.Image = Properties.Resources.Atelier_sarkany_banner;
+            pictureBox1.Location = new Point(4, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(856, 97);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
             // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(872, 647);
-            Controls.Add(panel1);
+            Controls.Add(pictureBox1);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label1);
             Margin = new Padding(2);
@@ -275,9 +260,7 @@
             Text = "Bienvenido a Atelier Sarkany";
             Load += FormPrincipal_Load;
             tableLayoutPanel1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -294,9 +277,7 @@
         private Label label1;
         private Button btnPagos;
         private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel1;
-        private PictureBox pictureBoxLogo;
-        private Label label2;
         private Button btnSalir;
+        private PictureBox pictureBox1;
     }
 }

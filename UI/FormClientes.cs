@@ -17,7 +17,16 @@ namespace UI
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
+            try
+            {
+                CargarGrilla();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar la lista de clientes",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      
+            }
         }
 
         private void CargarGrilla()
@@ -119,31 +128,63 @@ namespace UI
                 return;
             }
 
-            var confirmar = MessageBox.Show("¿Está seguro de eliminar al cliente?", "Confirmar", MessageBoxButtons.YesNo);
-            if (confirmar == DialogResult.Yes)
+            if (MessageBox.Show("¿Está seguro de eliminar al cliente?", "Confirmar",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                != DialogResult.Yes)
+                return;
+
+            try
             {
                 clienteBusiness.Eliminar(clienteSeleccionado.Id);
-                MessageBox.Show("Cliente eliminado correctamente");
+                MessageBox.Show("Cliente eliminado correctamente.", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarCampos();
                 CargarGrilla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar cliente",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
             }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            LimpiarCampos();
+            try
+            {
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error al limpiar los campos",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
         private void dgvClientes_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvClientes.SelectedRows.Count > 0)
+            try
             {
-                clienteSeleccionado = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
-                txtNombre.Text = clienteSeleccionado.Nombre;
-                txtApellido.Text = clienteSeleccionado.Apellido;
-                txtEmail.Text = clienteSeleccionado.Email;
-                txtTelefono.Text = clienteSeleccionado.Telefono;
+                if (dgvClientes.SelectedRows.Count > 0)
+                {
+                    clienteSeleccionado = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
+                    txtNombre.Text = clienteSeleccionado.Nombre;
+                    txtApellido.Text = clienteSeleccionado.Apellido;
+                    txtEmail.Text = clienteSeleccionado.Email;
+                    txtTelefono.Text = clienteSeleccionado.Telefono;
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Error inesperado al seleccionar cliente",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         #endregion
