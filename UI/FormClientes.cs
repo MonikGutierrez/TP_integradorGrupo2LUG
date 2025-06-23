@@ -85,8 +85,8 @@ namespace UI
 
                 clienteBusiness.Agregar(nuevo);
                 MessageBox.Show("Cliente agregado correctamente");
-                LimpiarCampos();
                 CargarGrilla();
+                LimpiarCampos();
             }
             catch (Exception ex)
             {
@@ -111,8 +111,8 @@ namespace UI
 
                 clienteBusiness.Modificar(clienteSeleccionado);
                 MessageBox.Show("Cliente modificado correctamente");
-                LimpiarCampos();
                 CargarGrilla();
+                LimpiarCampos();
             }
             catch (Exception ex)
             {
@@ -138,8 +138,8 @@ namespace UI
                 clienteBusiness.Eliminar(clienteSeleccionado.Id);
                 MessageBox.Show("Cliente eliminado correctamente.", "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarCampos();
                 CargarGrilla();
+                LimpiarCampos();
             }
             catch (Exception ex)
             {
