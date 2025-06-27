@@ -11,7 +11,6 @@ namespace MPP
             return new Calzado
             {
                 Id = (int)reader["id"],
-                TipoProducto = reader["tipoProducto"].ToString(),
                 Nombre = reader["nombre"].ToString(),
                 Descripcion = reader["descripcion"].ToString(),
                 Modelo = reader["modelo"].ToString(),

@@ -5,9 +5,10 @@ namespace Entity
     public class Vestido : Producto
         
     {
-       // public int Id { get; set; }
-    
-       // public string Nombre { get; set; }
+        // public int Id { get; set; }
+
+        // public string Nombre { get; set; }
+        public override string TipoProducto => "Vestido";
         public string Estado { get; set; }
         public string Talle { get; set; }
         public string Disenador { get; set; }

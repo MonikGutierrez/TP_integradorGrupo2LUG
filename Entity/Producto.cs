@@ -5,7 +5,7 @@ namespace Entity
     public abstract class Producto
     {
         public int Id { get; set; }
-        public string TipoProducto { get; set; } //hay q eliminarla, no existe el tipo en abstraccion
+        public abstract string TipoProducto { get; } //hay q eliminarla, no existe el tipo en abstraccion
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Modelo { get; set; }

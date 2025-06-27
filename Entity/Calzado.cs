@@ -7,6 +7,7 @@ namespace Entity
         public decimal Numero { get; set; }
         public string Categoria { get; set; }
         public int StockMinimo { get; set; }
+        public override string TipoProducto => "Calzado";
 
         public int StockCritico => 2;
 

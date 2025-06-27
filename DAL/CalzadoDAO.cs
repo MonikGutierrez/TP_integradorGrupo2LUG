@@ -39,24 +39,12 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd1 = new SqlCommand(
-                    "INSERT INTO Producto VALUES (@id, @tipoProducto, @nombre, @descripcion, @modelo, @color, @temporada, @precio, @stock, @fechaCreacion, @fechaModificacion)", conn);
-                cmd1.Parameters.AddWithValue("@id", calzado.Id);
-                cmd1.Parameters.AddWithValue("@tipoProducto", "Calzado");
-                cmd1.Parameters.AddWithValue("@nombre", calzado.Nombre);
-                cmd1.Parameters.AddWithValue("@descripcion", calzado.Descripcion);
-                cmd1.Parameters.AddWithValue("@modelo", calzado.Modelo);
-                cmd1.Parameters.AddWithValue("@color", calzado.Color);
-                cmd1.Parameters.AddWithValue("@temporada", calzado.Temporada);
-                cmd1.Parameters.AddWithValue("@precio", calzado.Precio);
-                cmd1.Parameters.AddWithValue("@stock", calzado.Stock);
-                cmd1.Parameters.AddWithValue("@fechaCreacion", calzado.FechaCreacion);
-                cmd1.Parameters.AddWithValue("@fechaModificacion", calzado.FechaUltimaModificacion);
-                cmd1.ExecuteNonQuery();
+                ProductoDAO productoDao = new ProductoDAO();
+                int idProducto = productoDao.Agregar(calzado, conn);
 
                 SqlCommand cmd2 = new SqlCommand(
-                    "INSERT INTO Calzado VALUES (@id, @numero, @categoria, @stockMinimo)", conn);
-                cmd2.Parameters.AddWithValue("@id", calzado.Id);
+                    "INSERT INTO Calzado (id, numero, categoria, stockMinimo) VALUES (@id, @numero, @categoria, @stockMinimo)", conn);
+                cmd2.Parameters.AddWithValue("@id", idProducto);
                 cmd2.Parameters.AddWithValue("@numero", calzado.Numero);
                 cmd2.Parameters.AddWithValue("@categoria", calzado.Categoria);
                 cmd2.Parameters.AddWithValue("@stockMinimo", calzado.StockMinimo);
