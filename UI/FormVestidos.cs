@@ -24,8 +24,11 @@ namespace UI
                 "DISPONIBLE", "RESERVADO", "EN AJUSTE", "VENDIDO", "DEVUELTO", "EN LAVADO", "EN REVISIÓN", "DADO DE BAJA"
             });
 
+            cmbTalle.Items.Clear();
+            cmbTalle.Items.AddRange(new string[] { "XS", "S", "M", "L", "XL", "XXL" });
+
             cmbTemporada.Items.Clear();
-            cmbTemporada.Items.AddRange(new string[] { "XS", "S", "M", "L", "XL", "XXL" });
+            cmbTemporada.Items.AddRange(new string[] { "Primavera-Verano", "Otoño-Invierno" });
 
             cmbNombreVestido.Items.Clear();
             cmbNombreVestido.Items.AddRange(new string[] {
@@ -51,7 +54,13 @@ namespace UI
                 {
                     Nombre = cmbNombreVestido.Text,
                     Estado = cmbEstado.Text,
-                    Talle = cmbTemporada.Text,
+                    Descripcion = txtDescripcionVestido.Text,
+                    Modelo = cmbNombreVestido.Text,
+                    Color = txtColor.Text,
+                    Precio = decimal.TryParse(txtPrecio.Text, out decimal precio) ? precio : 0,
+                    Temporada = cmbTemporada.Text,
+                    Stock = int.TryParse(txtStock.Text, out int stock) ? stock : 0,
+                    Talle = cmbTalle.Text,
                     Disenador = txtDisenador.Text,
                     TiempoAjusteHoras = int.TryParse(txtHorasAjuste.Text, out int horas) ? horas : 0,
                     EsUnico = ckbSi.Checked,

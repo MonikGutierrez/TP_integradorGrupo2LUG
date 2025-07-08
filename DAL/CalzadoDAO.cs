@@ -61,18 +61,8 @@ namespace DAL
             {
                 conn.Open();
 
-                SqlCommand cmd1 = new SqlCommand(
-                    "UPDATE Producto SET nombre=@nombre, descripcion=@descripcion, modelo=@modelo, color=@color, temporada=@temporada, precio=@precio, stock=@stock, fechaUltimaModificacion=@modificado WHERE id=@id", conn);
-                cmd1.Parameters.AddWithValue("@nombre", calzado.Nombre);
-                cmd1.Parameters.AddWithValue("@descripcion", calzado.Descripcion);
-                cmd1.Parameters.AddWithValue("@modelo", calzado.Modelo);
-                cmd1.Parameters.AddWithValue("@color", calzado.Color);
-                cmd1.Parameters.AddWithValue("@temporada", calzado.Temporada);
-                cmd1.Parameters.AddWithValue("@precio", calzado.Precio);
-                cmd1.Parameters.AddWithValue("@stock", calzado.Stock);
-                cmd1.Parameters.AddWithValue("@modificado", calzado.FechaUltimaModificacion);
-                cmd1.Parameters.AddWithValue("@id", calzado.Id);
-                cmd1.ExecuteNonQuery();
+                ProductoDAO productoDao = new ProductoDAO();
+                productoDao.Modificar(calzado, conn);
 
                 SqlCommand cmd2 = new SqlCommand(
                     "UPDATE Calzado SET numero=@numero, categoria=@categoria, stockMinimo=@stockMinimo WHERE id=@id", conn);

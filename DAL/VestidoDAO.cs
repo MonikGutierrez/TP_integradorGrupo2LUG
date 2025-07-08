@@ -18,7 +18,7 @@ namespace DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Vestido", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Vestido INNER JOIN Producto ON Producto.id = Vestido.id WHERE tipoProducto = 'Vestido'", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 VestidoMapper mapper = new VestidoMapper();
@@ -36,16 +36,21 @@ namespace DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"INSERT INTO Vestido (nombre, estado, talle, disenador, tiempoAjusteHoras, es_unico, fecha_ultimo_ajuste)
-                                 VALUES (@nombre, @estado, @talle, @disenador, @tiempo, @esUnico, @fecha)";
+
+                ProductoDAO productoDao = new ProductoDAO();
+                int idProducto = productoDao.Agregar(vestido, conn);
+
+                string query = @"INSERT INTO Vestido (id, nombre, estado, talle, disenador, tiempoAjusteHoras, es_unico, fecha_ultimo_ajuste)
+                                VALUES (@id, @nombre, @estado, @talle, @disenador, @tiempo, @esUnico, @fecha)";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", idProducto);
                 cmd.Parameters.AddWithValue("@nombre", vestido.Nombre);
                 cmd.Parameters.AddWithValue("@estado", vestido.Estado);
                 cmd.Parameters.AddWithValue("@talle", vestido.Talle);
                 cmd.Parameters.AddWithValue("@disenador", vestido.Disenador);
                 cmd.Parameters.AddWithValue("@tiempo", vestido.TiempoAjusteHoras);
                 cmd.Parameters.AddWithValue("@esUnico", vestido.EsUnico);
-                cmd.Parameters.AddWithValue("@fecha", (object)vestido.FechaUltimoAjuste ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@fecha", vestido.FechaUltimoAjuste);
                 cmd.ExecuteNonQuery();
                 scope.Complete();
             }
@@ -57,6 +62,10 @@ namespace DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
+
+                ProductoDAO productoDao = new ProductoDAO();
+                productoDao.Modificar(vestido, conn);
+
                 string query = @"UPDATE Vestido SET 
                                     nombre = @nombre, 
                                     estado = @estado, 

@@ -32,10 +32,25 @@ namespace DAL
             cmd.Parameters.AddWithValue("@temporada", producto.Temporada ?? (object)DBNull.Value);
             cmd.Parameters.AddWithValue("@precio", producto.Precio);
             cmd.Parameters.AddWithValue("@stock", producto.Stock);
-            cmd.Parameters.AddWithValue("@fechaCreacion", producto.FechaCreacion);
-            cmd.Parameters.AddWithValue("@fechaUltimaModificacion", producto.FechaUltimaModificacion);
+            cmd.Parameters.AddWithValue("@fechaCreacion", DateTime.Now);
+            cmd.Parameters.AddWithValue("@fechaUltimaModificacion", DateTime.Now);
 
             return (int)cmd.ExecuteScalar();
+        }
+
+        public void Modificar(Producto producto, SqlConnection conn) {
+            String query = "UPDATE Producto SET nombre=@nombre, descripcion=@descripcion, modelo=@modelo, color=@color, temporada=@temporada, precio=@precio, stock=@stock, fechaUltimaModificacion=@modificado WHERE id=@id";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+            cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+            cmd.Parameters.AddWithValue("@modelo", producto.Modelo);
+            cmd.Parameters.AddWithValue("@color", producto.Color);
+            cmd.Parameters.AddWithValue("@temporada", producto.Temporada);
+            cmd.Parameters.AddWithValue("@precio", producto.Precio);
+            cmd.Parameters.AddWithValue("@stock", producto.Stock);
+            cmd.Parameters.AddWithValue("@modificado", DateTime.Now);
+            cmd.Parameters.AddWithValue("@id", producto.Id);
+            cmd.ExecuteNonQuery();
         }
     }
 }
