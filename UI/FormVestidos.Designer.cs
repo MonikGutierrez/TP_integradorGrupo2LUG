@@ -39,7 +39,7 @@
             dtpUltimoAjuste = new DateTimePicker();
             txtDisenador = new TextBox();
             cmbTemporada = new ComboBox();
-            cmbNombreVestido = new ComboBox();
+            cmbModelo = new ComboBox();
             ckbSi = new CheckBox();
             label1 = new Label();
             txtDescripcionVestido = new TextBox();
@@ -142,6 +142,7 @@
             btnLimpiarVestidos.TabIndex = 65;
             btnLimpiarVestidos.Text = "LIMPIAR";
             btnLimpiarVestidos.UseVisualStyleBackColor = false;
+            btnLimpiarVestidos.Click += btnLimpiarVestidos_Click;
             // 
             // label2
             // 
@@ -237,17 +238,17 @@
             cmbTemporada.Size = new Size(337, 27);
             cmbTemporada.TabIndex = 40;
             // 
-            // cmbNombreVestido
+            // cmbModelo
             // 
-            cmbNombreVestido.BackColor = Color.SeaShell;
-            cmbNombreVestido.Font = new Font("Bookman Old Style", 9F);
-            cmbNombreVestido.ForeColor = Color.FromArgb(64, 0, 0);
-            cmbNombreVestido.FormattingEnabled = true;
-            cmbNombreVestido.Location = new Point(206, 181);
-            cmbNombreVestido.Margin = new Padding(2, 3, 2, 3);
-            cmbNombreVestido.Name = "cmbNombreVestido";
-            cmbNombreVestido.Size = new Size(337, 27);
-            cmbNombreVestido.TabIndex = 41;
+            cmbModelo.BackColor = Color.SeaShell;
+            cmbModelo.Font = new Font("Bookman Old Style", 9F);
+            cmbModelo.ForeColor = Color.FromArgb(64, 0, 0);
+            cmbModelo.FormattingEnabled = true;
+            cmbModelo.Location = new Point(206, 181);
+            cmbModelo.Margin = new Padding(2, 3, 2, 3);
+            cmbModelo.Name = "cmbModelo";
+            cmbModelo.Size = new Size(337, 27);
+            cmbModelo.TabIndex = 41;
             // 
             // ckbSi
             // 
@@ -429,7 +430,7 @@
             groupBox1.Controls.Add(txtDescripcionVestido);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(ckbSi);
-            groupBox1.Controls.Add(cmbNombreVestido);
+            groupBox1.Controls.Add(cmbModelo);
             groupBox1.Controls.Add(cmbTemporada);
             groupBox1.Controls.Add(txtDisenador);
             groupBox1.Controls.Add(dtpUltimoAjuste);
@@ -541,7 +542,7 @@
         private DateTimePicker dtpUltimoAjuste;
         private TextBox txtDisenador;
         private ComboBox cmbTemporada;
-        private ComboBox cmbNombreVestido;
+        private ComboBox cmbModelo;
         private CheckBox ckbSi;
         private Label label1;
         private TextBox txtDescripcionVestido;

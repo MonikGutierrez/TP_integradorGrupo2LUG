@@ -1,24 +1,22 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using BLL;
 using Entity;
-using BLL;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Reflection;
+using System.Windows.Forms;
 
 
 namespace UI
 {
-    public partial class FormVestidos : Form
-    {
+    public partial class FormVestidos : Form {
         private VestidoBusiness negocio = new VestidoBusiness();
         private Vestido vestidoSeleccionado;
 
-        public FormVestidos()
-        {
+        public FormVestidos() {
             InitializeComponent();
         }
 
-        private void FormVestidos_Load(object sender, EventArgs e)
-        {
+        private void FormVestidos_Load(object sender, EventArgs e) {
             cmbEstado.Items.Clear();
             cmbEstado.Items.AddRange(new string[] {
                 "DISPONIBLE", "RESERVADO", "EN AJUSTE", "VENDIDO", "DEVUELTO", "EN LAVADO", "EN REVISIÓN", "DADO DE BAJA"
@@ -30,8 +28,8 @@ namespace UI
             cmbTemporada.Items.Clear();
             cmbTemporada.Items.AddRange(new string[] { "Primavera-Verano", "Otoño-Invierno" });
 
-            cmbNombreVestido.Items.Clear();
-            cmbNombreVestido.Items.AddRange(new string[] {
+            cmbModelo.Items.Clear();
+            cmbModelo.Items.AddRange(new string[] {
                 "Vestido de Gala", "Vestido de Coctel", "Vestido Largo Elegante",
                 "Vestido Corto para Eventos", "Vestido Casual Urbano", "Vestido de Novia"
             });
@@ -39,23 +37,19 @@ namespace UI
             CargarGrilla();
         }
 
-        private void CargarGrilla()
-        {
+        private void CargarGrilla() {
             dgvVestidos.DataSource = null;
             dgvVestidos.DataSource = negocio.Listar();
             dgvVestidos.ClearSelection();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Vestido nuevo = new Vestido
-                {
-                    Nombre = cmbNombreVestido.Text,
+        private void btnAgregar_Click(object sender, EventArgs e) {
+            try {
+                Vestido nuevo = new Vestido {
+                    Nombre = txtNombreVest.Text,
                     Estado = cmbEstado.Text,
                     Descripcion = txtDescripcionVestido.Text,
-                    Modelo = cmbNombreVestido.Text,
+                    Modelo = cmbModelo.Text,
                     Color = txtColor.Text,
                     Precio = decimal.TryParse(txtPrecio.Text, out decimal precio) ? precio : 0,
                     Temporada = cmbTemporada.Text,
@@ -71,26 +65,27 @@ namespace UI
                 MessageBox.Show("Vestido agregado correctamente");
                 LimpiarCampos();
                 CargarGrilla();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
-        {
-            if (vestidoSeleccionado == null)
-            {
+        private void btnModificar_Click(object sender, EventArgs e) {
+            if (vestidoSeleccionado == null) {
                 MessageBox.Show("Seleccione un vestido para modificar.");
                 return;
             }
 
-            try
-            {
-                vestidoSeleccionado.Nombre = cmbNombreVestido.Text;
+            try {
+                vestidoSeleccionado.Nombre = txtNombreVest.Text;
                 vestidoSeleccionado.Estado = cmbEstado.Text;
-                vestidoSeleccionado.Talle = cmbTemporada.Text;
+                vestidoSeleccionado.Descripcion = txtDescripcionVestido.Text;
+                vestidoSeleccionado.Modelo = cmbModelo.Text;
+                vestidoSeleccionado.Color = txtColor.Text;
+                vestidoSeleccionado.Precio = decimal.TryParse(txtPrecio.Text, out decimal precio) ? precio : 0;
+                vestidoSeleccionado.Temporada = cmbTemporada.Text;
+                vestidoSeleccionado.Stock = int.TryParse(txtStock.Text, out int stock) ? stock : 0;
+                vestidoSeleccionado.Talle = cmbTalle.Text;
                 vestidoSeleccionado.Disenador = txtDisenador.Text;
                 vestidoSeleccionado.TiempoAjusteHoras = int.TryParse(txtHorasAjuste.Text, out int h) ? h : 0;
                 vestidoSeleccionado.EsUnico = ckbSi.Checked;
@@ -100,51 +95,46 @@ namespace UI
                 MessageBox.Show("Vestido modificado correctamente");
                 LimpiarCampos();
                 CargarGrilla();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (vestidoSeleccionado == null)
-            {
+        private void btnEliminar_Click(object sender, EventArgs e) {
+            if (vestidoSeleccionado == null) {
                 MessageBox.Show("Seleccione un vestido para eliminar.");
                 return;
             }
 
             var confirmar = MessageBox.Show("¿Está segura de eliminar el vestido?", "Confirmar", MessageBoxButtons.YesNo);
-            if (confirmar == DialogResult.Yes)
-            {
-                try
-                {
+            if (confirmar == DialogResult.Yes) {
+                try {
                     negocio.Eliminar(vestidoSeleccionado.Id);
                     MessageBox.Show("Vestido eliminado correctamente.");
                     LimpiarCampos();
                     CargarGrilla();
-                }
-                catch (SqlException ex) when (ex.Number == 547) // FK constraint error
-                {
+                } catch (SqlException ex) when (ex.Number == 547) // FK constraint error
+                  {
                     MessageBox.Show("No se puede eliminar el vestido porque está asociado a una reserva.", "Error");
-                }
-                catch (Exception ex)
-                {
+                } catch (Exception ex) {
                     MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
             }
         }
 
 
-        private void dgvVestidos_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvVestidos.SelectedRows.Count > 0)
-            {
+        private void dgvVestidos_SelectionChanged(object sender, EventArgs e) {
+            if (dgvVestidos.SelectedRows.Count > 0) {
                 vestidoSeleccionado = (Vestido)dgvVestidos.SelectedRows[0].DataBoundItem;
-                cmbNombreVestido.Text = vestidoSeleccionado.Nombre;
+                txtNombreVest.Text = vestidoSeleccionado.Nombre;
                 cmbEstado.Text = vestidoSeleccionado.Estado;
-                cmbTemporada.Text = vestidoSeleccionado.Talle;
+                txtDescripcionVestido.Text = vestidoSeleccionado.Descripcion;
+                cmbModelo.Text = vestidoSeleccionado.Modelo;
+                txtColor.Text = vestidoSeleccionado.Color;
+                txtPrecio.Text = vestidoSeleccionado.Precio.ToString();
+                cmbTemporada.Text = vestidoSeleccionado.Temporada;
+                txtStock.Text = vestidoSeleccionado.Stock.ToString();
+                cmbTalle.Text = vestidoSeleccionado.Talle;
                 txtDisenador.Text = vestidoSeleccionado.Disenador;
                 txtHorasAjuste.Text = vestidoSeleccionado.TiempoAjusteHoras.ToString();
                 dtpUltimoAjuste.Value = vestidoSeleccionado.FechaUltimoAjuste ?? DateTime.Now;
@@ -152,16 +142,25 @@ namespace UI
             }
         }
 
-        private void LimpiarCampos()
-        {
-            cmbNombreVestido.SelectedIndex = -1;
+        private void LimpiarCampos() {
+            cmbModelo.SelectedIndex = -1;
             cmbEstado.SelectedIndex = -1;
             cmbTemporada.SelectedIndex = -1;
+            cmbTalle.SelectedIndex = -1;
             txtDisenador.Clear();
             txtHorasAjuste.Clear();
+            txtColor.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
+            txtNombreVest.Clear();
+            txtDescripcionVestido.Clear();
             ckbSi.Checked = false;
             dtpUltimoAjuste.Value = DateTime.Now;
             vestidoSeleccionado = null;
+        }
+
+        private void btnLimpiarVestidos_Click(object sender, EventArgs e) {
+            LimpiarCampos();
         }
     }
 }
