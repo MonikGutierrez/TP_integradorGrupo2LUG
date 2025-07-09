@@ -1,6 +1,7 @@
 ﻿using DAL;
 using Entity;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Mail;
 
 namespace BLL
@@ -11,20 +12,33 @@ namespace BLL
 
         public List<Cliente> Listar()
         {
-            return dao.Listar();
+            try {
+                return dao.Listar();
+            } catch {
+                throw;
+            }
         }
 
         public void Agregar(Cliente cliente)
         {
-            ValidarCliente(cliente);
-            dao.Agregar(cliente);
+            try {
+                ValidarCliente(cliente);
+                dao.Agregar(cliente);
+            } catch {
+                throw;
+            }
         }
         public void Modificar(Cliente cliente)
         {
             if (cliente == null || cliente.Id <= 0)
                 throw new Exception("Cliente inválido.");
-            ValidarCliente(cliente);
-            dao.Modificar(cliente);
+            
+            try {
+                ValidarCliente(cliente);
+                dao.Modificar(cliente);
+            } catch {
+                throw;
+            }
         }
 
         public void Eliminar(int id)
@@ -32,7 +46,11 @@ namespace BLL
             if (id <= 0)
                 throw new Exception("ID inválido para eliminar.");
 
-            dao.Eliminar(id);
+            try {
+                dao.Eliminar(id);
+            } catch {
+                throw;
+            }
         }
 
         private void ValidarCliente(Cliente cliente) {
@@ -49,16 +67,22 @@ namespace BLL
                 throw new Exception("El email es obligatorio.");
 
             // Validamos que el telefono no contenga letras
-            if (!cliente.Telefono.Trim().All(char.IsDigit))
+            if (!cliente.Telefono.All(char.IsDigit))
                 throw new Exception("El teléfono ingresado no debe contener letras.");
             
             // Validamos que el telefono contenga menos de 8 digitos
-            if (cliente.Telefono.Trim().Length < 8)
+            if (cliente.Telefono.Length < 8)
                 throw new Exception("El teléfono ingresado debe contener más de 8 dígitos.");
 
             // Validamos que el mail tenga un formato valido
-            if (!EsEmailValido(cliente.Email.Trim()))
+            if (!EsEmailValido(cliente.Email))
                 throw new Exception("El formato del email ingresado no es válido.");
+
+            if (!(cliente.DNI.All(char.IsDigit) && cliente.DNI.Length >= 7 && cliente.DNI.Length <= 8))
+                throw new Exception("El formato del DNI ingresado no es válido.");
+
+            if(dao.ObtenerPorDni(cliente.DNI) != null)
+                throw new Exception("El DNI ingresado ya se corresponde con un cliente cargado.");
         }
 
         bool EsEmailValido(string email) {

@@ -26,13 +26,12 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             Button btnAlta;
             Button btnModificar;
             Button btnEliminar;
             Button btnLimpiar;
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             txtNombre = new TextBox();
             txtApellido = new TextBox();
             txtEmail = new TextBox();
@@ -43,10 +42,9 @@
             label4 = new Label();
             dgvClientes = new DataGridView();
             groupBox1 = new GroupBox();
-            label5 = new Label();
             txtDNI = new TextBox();
             label6 = new Label();
-            label7 = new Label();
+            label5 = new Label();
             btnAlta = new Button();
             btnModificar = new Button();
             btnEliminar = new Button();
@@ -140,10 +138,10 @@
             txtNombre.BackColor = Color.SeaShell;
             txtNombre.Font = new Font("Bookman Old Style", 9F);
             txtNombre.ForeColor = Color.FromArgb(64, 0, 0);
-            txtNombre.Location = new Point(101, 25);
+            txtNombre.Location = new Point(126, 25);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(971, 22);
+            txtNombre.Size = new Size(946, 25);
             txtNombre.TabIndex = 0;
             // 
             // txtApellido
@@ -151,10 +149,10 @@
             txtApellido.BackColor = Color.SeaShell;
             txtApellido.Font = new Font("Bookman Old Style", 9F);
             txtApellido.ForeColor = Color.FromArgb(64, 0, 0);
-            txtApellido.Location = new Point(101, 69);
+            txtApellido.Location = new Point(126, 69);
             txtApellido.Margin = new Padding(3, 2, 3, 2);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(971, 22);
+            txtApellido.Size = new Size(946, 25);
             txtApellido.TabIndex = 2;
             // 
             // txtEmail
@@ -162,10 +160,10 @@
             txtEmail.BackColor = Color.SeaShell;
             txtEmail.Font = new Font("Bookman Old Style", 9F);
             txtEmail.ForeColor = Color.FromArgb(64, 0, 0);
-            txtEmail.Location = new Point(101, 190);
+            txtEmail.Location = new Point(126, 190);
             txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(971, 22);
+            txtEmail.Size = new Size(946, 25);
             txtEmail.TabIndex = 3;
             // 
             // txtTelefono
@@ -173,19 +171,19 @@
             txtTelefono.BackColor = Color.SeaShell;
             txtTelefono.Font = new Font("Bookman Old Style", 9F);
             txtTelefono.ForeColor = Color.FromArgb(64, 0, 0);
-            txtTelefono.Location = new Point(101, 145);
+            txtTelefono.Location = new Point(126, 145);
             txtTelefono.Margin = new Padding(3, 2, 3, 2);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(971, 22);
+            txtTelefono.Size = new Size(946, 25);
             txtTelefono.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.ForeColor = Color.FromArgb(64, 0, 0);
-            label1.Location = new Point(12, 26);
+            label1.Location = new Point(16, 25);
             label1.Name = "label1";
-            label1.Size = new Size(83, 18);
+            label1.Size = new Size(104, 23);
             label1.TabIndex = 5;
             label1.Text = "Nombre:";
             // 
@@ -193,9 +191,9 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.FromArgb(64, 0, 0);
-            label2.Location = new Point(6, 72);
+            label2.Location = new Point(6, 71);
             label2.Name = "label2";
-            label2.Size = new Size(91, 18);
+            label2.Size = new Size(114, 23);
             label2.TabIndex = 6;
             label2.Text = "Apellido:";
             // 
@@ -203,9 +201,9 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.FromArgb(64, 0, 0);
-            label3.Location = new Point(32, 194);
+            label3.Location = new Point(42, 190);
             label3.Name = "label3";
-            label3.Size = new Size(63, 18);
+            label3.Size = new Size(78, 23);
             label3.TabIndex = 7;
             label3.Text = "Email:";
             // 
@@ -213,19 +211,19 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.FromArgb(64, 0, 0);
-            label4.Location = new Point(6, 148);
+            label4.Location = new Point(0, 145);
             label4.Name = "label4";
-            label4.Size = new Size(97, 18);
+            label4.Size = new Size(121, 23);
             label4.TabIndex = 8;
             label4.Text = "Telefono:";
             // 
             // dgvClientes
             // 
-            dataGridViewCellStyle2.BackColor = Color.SeaShell;
-            dataGridViewCellStyle2.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(64, 0, 0);
-            dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = Color.SeaShell;
+            dataGridViewCellStyle1.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(64, 0, 0);
+            dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvClientes.BackgroundColor = Color.SeaShell;
             dgvClientes.BorderStyle = BorderStyle.Fixed3D;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -240,7 +238,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(txtDNI);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(btnLimpiar);
@@ -264,6 +261,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Gestion de clientes";
             // 
+            // txtDNI
+            // 
+            txtDNI.BackColor = Color.SeaShell;
+            txtDNI.Font = new Font("Bookman Old Style", 9F);
+            txtDNI.ForeColor = Color.FromArgb(64, 0, 0);
+            txtDNI.Location = new Point(126, 105);
+            txtDNI.Margin = new Padding(3, 2, 3, 2);
+            txtDNI.Name = "txtDNI";
+            txtDNI.Size = new Size(946, 25);
+            txtDNI.TabIndex = 31;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = Color.FromArgb(64, 0, 0);
+            label6.Location = new Point(63, 107);
+            label6.Name = "label6";
+            label6.Size = new Size(57, 23);
+            label6.TabIndex = 32;
+            label6.Text = "DNI:";
+            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -271,46 +289,13 @@
             label5.ForeColor = Color.FromArgb(64, 0, 0);
             label5.Location = new Point(35, 297);
             label5.Name = "label5";
-            label5.Size = new Size(129, 12);
+            label5.Size = new Size(164, 16);
             label5.TabIndex = 31;
             label5.Text = "Listado de clientes";
             // 
-            // txtDNI
-            // 
-            txtDNI.BackColor = Color.SeaShell;
-            txtDNI.Font = new Font("Bookman Old Style", 9F);
-            txtDNI.ForeColor = Color.FromArgb(64, 0, 0);
-            txtDNI.Location = new Point(101, 105);
-            txtDNI.Margin = new Padding(3, 2, 3, 2);
-            txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(971, 22);
-            txtDNI.TabIndex = 31;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.FromArgb(64, 0, 0);
-            label6.Location = new Point(50, 109);
-            label6.Name = "label6";
-            label6.Size = new Size(45, 18);
-            label6.TabIndex = 32;
-            label6.Text = "DNI:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.FromArgb(64, 0, 0);
-            label7.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(165, 110);
-            label7.Name = "label7";
-            label7.Size = new Size(283, 12);
-            label7.TabIndex = 32;
-            label7.Text = "AGREGADO, HAY QUE MODIFICAR CODIGO";
-            // 
             // FormClientes
             // 
-            AutoScaleDimensions = new SizeF(11F, 17F);
+            AutoScaleDimensions = new SizeF(14F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
             ClientSize = new Size(1164, 678);
@@ -346,6 +331,5 @@
         private Label label5;
         private TextBox txtDNI;
         private Label label6;
-        private Label label7;
     }
 }

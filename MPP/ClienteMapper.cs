@@ -17,6 +17,7 @@ namespace MPP
                 Apellido = reader["apellido"].ToString(),
                 Email = reader["email"].ToString(),
                 Telefono = reader["telefono"].ToString(),
+                DNI = reader["dni"].ToString(),
                 FechaRegistro = Convert.ToDateTime(reader["fechaRegistro"])
             };
         }

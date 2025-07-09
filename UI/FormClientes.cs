@@ -76,11 +76,12 @@ namespace UI
             {
                 Cliente nuevo = new Cliente()
                 {
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    Email = txtEmail.Text,
-                    Telefono = txtTelefono.Text,
-                    FechaRegistro = DateTime.Now
+                    Nombre = txtNombre.Text.Trim(),
+                    Apellido = txtApellido.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    Telefono = txtTelefono.Text.Trim(),
+                    FechaRegistro = DateTime.Now,
+                    DNI = txtDNI.Text.Trim()
                 };
 
                 clienteBusiness.Agregar(nuevo);
@@ -104,10 +105,11 @@ namespace UI
 
             try
             {
-                clienteSeleccionado.Nombre = txtNombre.Text;
-                clienteSeleccionado.Apellido = txtApellido.Text;
-                clienteSeleccionado.Email = txtEmail.Text;
-                clienteSeleccionado.Telefono = txtTelefono.Text;
+                clienteSeleccionado.Nombre = txtNombre.Text.Trim();
+                clienteSeleccionado.Apellido = txtApellido.Text.Trim();
+                clienteSeleccionado.Email = txtEmail.Text.Trim();
+                clienteSeleccionado.Telefono = txtTelefono.Text.Trim();
+                clienteSeleccionado.DNI = txtDNI.Text.Trim();
 
                 clienteBusiness.Modificar(clienteSeleccionado);
                 MessageBox.Show("Cliente modificado correctamente");
@@ -177,6 +179,7 @@ namespace UI
                     txtApellido.Text = clienteSeleccionado.Apellido;
                     txtEmail.Text = clienteSeleccionado.Email;
                     txtTelefono.Text = clienteSeleccionado.Telefono;
+                    txtDNI.Text = clienteSeleccionado.DNI;
                 }
             }
             catch (Exception)
@@ -191,10 +194,11 @@ namespace UI
 
         private void LimpiarCampos()
         {
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtEmail.Text = "";
-            txtTelefono.Text = "";
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtEmail.Clear();
+            txtTelefono.Clear();
+            txtDNI.Clear();
             clienteSeleccionado = null;
         }
 
