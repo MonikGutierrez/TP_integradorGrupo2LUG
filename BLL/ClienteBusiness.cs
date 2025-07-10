@@ -23,6 +23,8 @@ namespace BLL
         {
             try {
                 ValidarCliente(cliente);
+                if (dao.ObtenerPorDni(cliente.DNI) != null)
+                    throw new Exception("El DNI ingresado ya se corresponde con un cliente cargado.");
                 dao.Agregar(cliente);
             } catch {
                 throw;
@@ -35,6 +37,9 @@ namespace BLL
             
             try {
                 ValidarCliente(cliente);
+                Cliente? clienteGuardado = dao.ObtenerPorDni(cliente.DNI);
+                if(clienteGuardado != null && clienteGuardado.Id != cliente.Id)
+                    throw new Exception("El DNI ingresado ya se corresponde con un cliente cargado.");
                 dao.Modificar(cliente);
             } catch {
                 throw;
@@ -80,9 +85,6 @@ namespace BLL
 
             if (!(cliente.DNI.All(char.IsDigit) && cliente.DNI.Length >= 7 && cliente.DNI.Length <= 8))
                 throw new Exception("El formato del DNI ingresado no es válido.");
-
-            if(dao.ObtenerPorDni(cliente.DNI) != null)
-                throw new Exception("El DNI ingresado ya se corresponde con un cliente cargado.");
         }
 
         bool EsEmailValido(string email) {
