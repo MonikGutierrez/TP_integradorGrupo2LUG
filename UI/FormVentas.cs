@@ -6,27 +6,27 @@ using System.Windows.Forms;
 using BLL;
 using Entity;
 
-namespace UI
-{
-    public partial class FormVentas : Form
-    {
+namespace UI {
+    public partial class FormVentas : Form {
         private ClienteBusiness clienteBusiness = new ClienteBusiness();
         private VestidoBusiness vestidoBusiness = new VestidoBusiness();
         private CalzadoBusiness calzadoBusiness = new CalzadoBusiness();
         private VentaBusiness ventaBusiness = new VentaBusiness();
+        private DetalleVenta itemSeleccionado;
+        private BindingList<DetalleVenta> itemsCarrito = new BindingList<DetalleVenta>();
 
-        private List<DetalleVenta> detalleTemporal = new List<DetalleVenta>();
-
-        public FormVentas()
-        {
+        public FormVentas() {
             InitializeComponent();
         }
 
-        private void FormVentas_Load(object sender, EventArgs e)
-        {
+        private void FormVentas_Load(object sender, EventArgs e) {
             cmbClientes.DataSource = clienteBusiness.Listar();
             cmbClientes.DisplayMember = "NombreCompleto";
             cmbClientes.ValueMember = "Id";
+
+            cmbMetodoDePago.Items.AddRange(new string[] {
+                "EFECTIVO", "TARJETA DE CRÉDITO", "TARJETA DE DÉBITO", "TRANSFERENCIA", "QR"
+            });
 
             List<Producto> productos = new List<Producto>();
             productos.AddRange(vestidoBusiness.Listar());
@@ -36,73 +36,86 @@ namespace UI
             cmbProductos.DisplayMember = "Descripcion";
             cmbProductos.ValueMember = "Id";
 
-            dgvDetalle.DataSource = null;
-            dgvDetalle.DataSource = detalleTemporal;
+            dgvCarrito.DataSource = itemsCarrito;
+            LimpiarSeleccionCarrito();
+            ActualizarTablaVentas();
+            ActualizarTotal();
         }
 
-        private void btnAgregarProducto_Click(object sender, EventArgs e)
-        {
-            if (!int.TryParse(txtCantidad.Text, out int cantidad) || cantidad <= 0)
-            {
+        private void btnAgregarProducto_Click(object sender, EventArgs e) {
+            if (!int.TryParse(txtCantidad.Text, out int cantidad) || cantidad <= 0) {
                 MessageBox.Show("Cantidad inválida");
                 return;
             }
 
             Producto producto = (Producto)cmbProductos.SelectedItem;
 
-            DetalleVenta detalle = new DetalleVenta
-            {
-                Producto = producto,
+            DetalleVenta detalle = new DetalleVenta {
                 ProductoId = producto.Id,
                 Cantidad = cantidad,
-                PrecioUnitario = producto.Precio
+                PrecioUnitario = producto.Precio,
             };
 
-            detalleTemporal.Add(detalle);
-            dgvDetalle.DataSource = null;
-            dgvDetalle.DataSource = detalleTemporal;
+            itemsCarrito.Add(detalle);
+            LimpiarSeleccionCarrito();
             ActualizarTotal();
-            txtCantidad.Clear();
         }
 
-        private void btnConfirmarVenta_Click(object sender, EventArgs e)
-        {
-            if (detalleTemporal.Count == 0)
-            {
+        private void btnConfirmarVenta_Click(object sender, EventArgs e) {
+            if (itemsCarrito.Count == 0) {
                 MessageBox.Show("Debe agregar al menos un producto.");
                 return;
             }
 
-            Venta venta = new Venta
-            {
+            Venta venta = new Venta {
                 ClienteId = (int)cmbClientes.SelectedValue,
                 Fecha = DateTime.Now,
                 Total = CalcularTotal(),
                 Estado = "Finalizada",
-                MetodoPago = "Efectivo",
-                Detalles = detalleTemporal
+                MetodoPago = cmbMetodoDePago.Text,
+                Detalles = itemsCarrito.ToList()
             };
 
             ventaBusiness.Agregar(venta);
             MessageBox.Show("Venta registrada con éxito.");
-            detalleTemporal.Clear();
-            dgvDetalle.DataSource = null;
+            itemsCarrito.Clear();
+            LimpiarSeleccionCarrito();
             ActualizarTotal();
+            ActualizarTablaVentas();
         }
 
-        private void ActualizarTotal()
-        {
-            lblTotal.Text = "$" + CalcularTotal().ToString("0.00");
+        private void ActualizarTotal() {
+            if(itemsCarrito.Count > 0) {
+                lblTotal.Text = "$" + CalcularTotal().ToString("0.00");
+            } else {
+                lblTotal.Text = "$ ----------";
+            }
         }
 
-        private decimal CalcularTotal()
-        {
+        private decimal CalcularTotal() {
             decimal total = 0;
-            foreach (var d in detalleTemporal)
-            {
+            foreach (var d in itemsCarrito) {
                 total += d.PrecioUnitario * d.Cantidad;
             }
             return total;
+        }
+
+        private void ActualizarTablaVentas() {
+            dgvVentas.DataSource = null;
+            dgvVentas.DataSource = ventaBusiness.Listar();
+            dgvVentas.ClearSelection();
+        }
+
+        private void LimpiarSeleccionCarrito() {
+            dgvCarrito.ClearSelection();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e) {
+            if (dgvCarrito.CurrentRow != null) {
+                itemsCarrito.RemoveAt(dgvCarrito.CurrentRow.Index);
+                ActualizarTotal();
+                ActualizarTablaVentas();
+            }
         }
     }
 }
