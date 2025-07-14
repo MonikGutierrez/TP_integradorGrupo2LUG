@@ -7,16 +7,35 @@ namespace MPP
 {
     public class CitaMapper
     {
-        public Cita Mapear(SqlDataReader reader)
+        public List<Cita> ListarTodo(SqlDataReader reader)
         {
-            return new Cita
+            try
             {
-                Id = (int)reader["id"],
-                ReservaId = (int)reader["reservaId"],
-                FechaHora = Convert.ToDateTime(reader["fechaHora"]),
-                TipoEstado = reader["tipoEstado"].ToString(),
-                Observaciones = reader["observaciones"].ToString()
-            };
+                List<Cita> lista = new List<Cita>();
+
+                while (reader.Read())
+                {
+                    Cita cita = new Cita();
+                    cita.Id = Convert.ToInt32(reader["id"]);
+                    cita.ClienteId = Convert.ToInt32(reader["ClienteId"]);
+                    cita.FechaHora = Convert.ToDateTime(reader["fechaHora"]);
+                    cita.ClienteId = reader["clienteId"] != DBNull.Value ? Convert.ToInt32(reader["clienteId"]) : 0;
+                    cita.TipoEstado = Convert.ToString(reader["tipoEstado"]);
+                    cita.Observaciones = Convert.ToString(reader["observaciones"]);
+
+
+                    lista.Add(cita);
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mapear la cita: " + ex.Message);
+            }
         }
+
+
     }
 }

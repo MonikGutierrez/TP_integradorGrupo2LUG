@@ -38,13 +38,15 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            cmbReservas = new ComboBox();
+            cmbClientes = new ComboBox();
             dtpFechaHora = new DateTimePicker();
             cmbEstadoCita = new ComboBox();
             dgvCitas = new DataGridView();
             txtObservaciones = new TextBox();
             label6 = new Label();
             groupBox1 = new GroupBox();
+            lblId = new Label();
+            label5 = new Label();
             btnConfirmarCita = new Button();
             btnLimpiarCita = new Button();
             btnModificarCita = new Button();
@@ -64,12 +66,12 @@
             btnConfirmarCita.FlatStyle = FlatStyle.Popup;
             btnConfirmarCita.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConfirmarCita.ForeColor = SystemColors.ControlLightLight;
-            btnConfirmarCita.Location = new Point(236, 185);
+            btnConfirmarCita.Location = new Point(236, 207);
             btnConfirmarCita.Margin = new Padding(2);
             btnConfirmarCita.Name = "btnConfirmarCita";
             btnConfirmarCita.Size = new Size(132, 38);
             btnConfirmarCita.TabIndex = 24;
-            btnConfirmarCita.Text = "CONFIRMAR";
+            btnConfirmarCita.Text = "AGREGAR";
             btnConfirmarCita.UseVisualStyleBackColor = false;
             btnConfirmarCita.Click += btnConfirmarCita_Click;
             // 
@@ -84,13 +86,14 @@
             btnLimpiarCita.FlatStyle = FlatStyle.Popup;
             btnLimpiarCita.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimpiarCita.ForeColor = Color.FromArgb(64, 0, 0);
-            btnLimpiarCita.Location = new Point(683, 183);
+            btnLimpiarCita.Location = new Point(683, 205);
             btnLimpiarCita.Margin = new Padding(3, 2, 3, 2);
             btnLimpiarCita.Name = "btnLimpiarCita";
             btnLimpiarCita.Size = new Size(133, 40);
             btnLimpiarCita.TabIndex = 71;
             btnLimpiarCita.Text = "LIMPIAR";
             btnLimpiarCita.UseVisualStyleBackColor = false;
+            btnLimpiarCita.Click += btnLimpiarCita_Click;
             // 
             // btnModificarCita
             // 
@@ -103,13 +106,14 @@
             btnModificarCita.FlatStyle = FlatStyle.Popup;
             btnModificarCita.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnModificarCita.ForeColor = Color.FromArgb(64, 0, 0);
-            btnModificarCita.Location = new Point(384, 183);
+            btnModificarCita.Location = new Point(384, 205);
             btnModificarCita.Margin = new Padding(2);
             btnModificarCita.Name = "btnModificarCita";
             btnModificarCita.Size = new Size(133, 40);
             btnModificarCita.TabIndex = 72;
             btnModificarCita.Text = "MODIFICAR";
             btnModificarCita.UseVisualStyleBackColor = false;
+            btnModificarCita.Click += btnModificarCita_Click;
             // 
             // btnEliminarCita
             // 
@@ -122,80 +126,81 @@
             btnEliminarCita.FlatStyle = FlatStyle.Popup;
             btnEliminarCita.Font = new Font("Courier New", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarCita.ForeColor = SystemColors.ControlLightLight;
-            btnEliminarCita.Location = new Point(532, 183);
+            btnEliminarCita.Location = new Point(532, 205);
             btnEliminarCita.Margin = new Padding(2);
             btnEliminarCita.Name = "btnEliminarCita";
             btnEliminarCita.Size = new Size(133, 40);
             btnEliminarCita.TabIndex = 71;
             btnEliminarCita.Text = "ELIMINAR";
             btnEliminarCita.UseVisualStyleBackColor = false;
+            btnEliminarCita.Click += btnEliminarCita_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Copperplate Gothic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(64, 0, 0);
-            label1.Location = new Point(27, 23);
+            label1.Location = new Point(20, 45);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(88, 18);
+            label1.Size = new Size(99, 18);
             label1.TabIndex = 0;
-            label1.Text = "Reserva:";
+            label1.Text = "Cliente(*):";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Copperplate Gothic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(64, 0, 0);
-            label2.Location = new Point(27, 65);
+            label2.Location = new Point(20, 87);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(134, 18);
+            label2.Size = new Size(152, 18);
             label2.TabIndex = 1;
-            label2.Text = "Fecha y Hora:";
+            label2.Text = "Fecha y Hora(*):";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Copperplate Gothic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(64, 0, 0);
-            label3.Location = new Point(29, 111);
+            label3.Location = new Point(20, 133);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(77, 18);
+            label3.Size = new Size(95, 18);
             label3.TabIndex = 2;
-            label3.Text = "Estado:";
+            label3.Text = "Estado(*):";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Copperplate Gothic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(64, 0, 0);
-            label4.Location = new Point(27, 153);
+            label4.Location = new Point(19, 175);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(149, 18);
             label4.TabIndex = 3;
             label4.Text = "Observaciones:";
             // 
-            // cmbReservas
+            // cmbClientes
             // 
-            cmbReservas.BackColor = Color.SeaShell;
-            cmbReservas.ForeColor = Color.Silver;
-            cmbReservas.FormattingEnabled = true;
-            cmbReservas.Location = new Point(176, 22);
-            cmbReservas.Margin = new Padding(2);
-            cmbReservas.Name = "cmbReservas";
-            cmbReservas.Size = new Size(401, 20);
-            cmbReservas.TabIndex = 4;
+            cmbClientes.BackColor = Color.SeaShell;
+            cmbClientes.ForeColor = Color.FromArgb(64, 0, 0);
+            cmbClientes.FormattingEnabled = true;
+            cmbClientes.Location = new Point(176, 44);
+            cmbClientes.Margin = new Padding(2);
+            cmbClientes.Name = "cmbClientes";
+            cmbClientes.Size = new Size(698, 20);
+            cmbClientes.TabIndex = 4;
             // 
             // dtpFechaHora
             // 
             dtpFechaHora.CalendarMonthBackground = Color.SeaShell;
-            dtpFechaHora.Location = new Point(176, 65);
+            dtpFechaHora.Location = new Point(176, 87);
             dtpFechaHora.Margin = new Padding(2);
             dtpFechaHora.Name = "dtpFechaHora";
-            dtpFechaHora.Size = new Size(397, 21);
+            dtpFechaHora.Size = new Size(698, 21);
             dtpFechaHora.TabIndex = 5;
             // 
             // cmbEstadoCita
@@ -203,10 +208,10 @@
             cmbEstadoCita.BackColor = Color.SeaShell;
             cmbEstadoCita.ForeColor = Color.FromArgb(64, 0, 0);
             cmbEstadoCita.FormattingEnabled = true;
-            cmbEstadoCita.Location = new Point(176, 110);
+            cmbEstadoCita.Location = new Point(176, 132);
             cmbEstadoCita.Margin = new Padding(2);
             cmbEstadoCita.Name = "cmbEstadoCita";
-            cmbEstadoCita.Size = new Size(397, 20);
+            cmbEstadoCita.Size = new Size(341, 20);
             cmbEstadoCita.TabIndex = 6;
             // 
             // dgvCitas
@@ -219,18 +224,20 @@
             dgvCitas.BackgroundColor = Color.SeaShell;
             dgvCitas.BorderStyle = BorderStyle.Fixed3D;
             dgvCitas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCitas.Location = new Point(3, 258);
+            dgvCitas.Location = new Point(3, 290);
             dgvCitas.Margin = new Padding(2);
             dgvCitas.Name = "dgvCitas";
             dgvCitas.RowHeadersWidth = 62;
-            dgvCitas.Size = new Size(903, 388);
+            dgvCitas.Size = new Size(903, 356);
             dgvCitas.TabIndex = 7;
+            dgvCitas.CellBorderStyleChanged += dgvCitas_SelectionChanged;
+            dgvCitas.Click += dgvCitas_SelectionChanged;
             // 
             // txtObservaciones
             // 
             txtObservaciones.BackColor = Color.SeaShell;
             txtObservaciones.ForeColor = Color.FromArgb(64, 0, 0);
-            txtObservaciones.Location = new Point(176, 151);
+            txtObservaciones.Location = new Point(176, 173);
             txtObservaciones.Margin = new Padding(2);
             txtObservaciones.Name = "txtObservaciones";
             txtObservaciones.Size = new Size(698, 21);
@@ -241,7 +248,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Copperplate Gothic Light", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(64, 0, 0);
-            label6.Location = new Point(10, 241);
+            label6.Location = new Point(3, 273);
             label6.Name = "label6";
             label6.Size = new Size(107, 12);
             label6.TabIndex = 69;
@@ -249,32 +256,58 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(lblId);
             groupBox1.Controls.Add(btnModificarCita);
+            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(btnLimpiarCita);
             groupBox1.Controls.Add(btnEliminarCita);
             groupBox1.Controls.Add(btnConfirmarCita);
             groupBox1.Controls.Add(txtObservaciones);
             groupBox1.Controls.Add(cmbEstadoCita);
             groupBox1.Controls.Add(dtpFechaHora);
-            groupBox1.Controls.Add(cmbReservas);
+            groupBox1.Controls.Add(cmbClientes);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.ForeColor = Color.FromArgb(64, 0, 0);
-            groupBox1.Location = new Point(3, 0);
+            groupBox1.Location = new Point(4, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(902, 232);
+            groupBox1.Size = new Size(902, 256);
             groupBox1.TabIndex = 70;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Gestión reservas";
+            groupBox1.Text = "Gestión citas";
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.BackColor = SystemColors.ScrollBar;
+            lblId.Font = new Font("Copperplate Gothic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblId.ForeColor = Color.FromArgb(64, 0, 0);
+            lblId.Location = new Point(53, 18);
+            lblId.Margin = new Padding(2, 0, 2, 0);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(0, 18);
+            lblId.TabIndex = 73;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Copperplate Gothic Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(64, 0, 0);
+            label5.Location = new Point(23, 18);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(29, 18);
+            label5.TabIndex = 74;
+            label5.Text = "Id:";
             // 
             // FormCitas
             // 
             AutoScaleDimensions = new SizeF(8F, 12F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ScrollBar;
-            ClientSize = new Size(917, 653);
+            ClientSize = new Size(917, 655);
             Controls.Add(groupBox1);
             Controls.Add(label6);
             Controls.Add(dgvCitas);
@@ -300,7 +333,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private ComboBox cmbReservas;
+        private ComboBox cmbClientes;
         private DateTimePicker dtpFechaHora;
         private ComboBox cmbEstadoCita;
         private DataGridView dgvCitas;
@@ -308,6 +341,8 @@
         private Button btnConfirmarCita;
         private Label label6;
         private GroupBox groupBox1;
+        private Label lblId;
+        private Label label5;
     }
     
 }

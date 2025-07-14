@@ -7,17 +7,35 @@ namespace MPP
 {
     public class PagoMapper
     {
-        public Pago Mapear(SqlDataReader reader)
+        public List<Pago> ListarTodo(SqlDataReader reader)
         {
-            return new Pago
+            try
             {
-                Id = (int)reader["id"],
-                ClienteId = (int)reader["clienteId"],
-                Monto = Convert.ToDecimal(reader["monto"]),
-                FechaPago = Convert.ToDateTime(reader["fechaPago"]),
-                MetodoPago = reader["metodoPago"].ToString(),
-                Observaciones = reader["observaciones"].ToString()
-            };
+                List<Pago> lista = new List<Pago>();
+
+                while (reader.Read())
+                {
+                    Pago pago = new Pago
+                    {
+                        Id = (int)reader["id"],
+                        Monto = Convert.ToDecimal(reader["monto"]),
+                        Fecha = Convert.ToDateTime(reader["fecha"]),
+                        MedioPago = reader["medioPago"].ToString(),
+                        VentaId = Convert.ToInt32(reader["ventaId"])
+
+                    };
+                    lista.Add(pago);
+                }
+
+                return lista;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }

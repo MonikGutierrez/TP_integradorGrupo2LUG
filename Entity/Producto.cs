@@ -1,11 +1,10 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
 
 namespace Entity
 {
     public abstract class Producto
     {
         public int Id { get; set; }
-        public abstract string TipoProducto { get; } //hay q eliminarla, no existe el tipo en abstraccion
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Modelo { get; set; }
@@ -14,6 +13,17 @@ namespace Entity
         public decimal Precio { get; set; }
         public int Stock { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public DateTime FechaUltimaModificacion { get; set; }
+
+        public string ProductoCompleto
+        {
+            get { return $"{Id} - {Nombre} - ${Precio}"; }
+        }
+
+
+        public override string ToString()
+        {
+            return $"{Id} - {Nombre}";
+        }
+
     }
 }

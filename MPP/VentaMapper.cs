@@ -1,24 +1,37 @@
 ﻿using Entity;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 
 namespace MPP
 {
     public class VentaMapper
     {
-        public Venta Mapear(SqlDataReader reader)
+        public List<Venta> ListarTodo(SqlDataReader reader)
         {
-            return new Venta
+            try
             {
-                Id = (int)reader["id"],
-                ClienteId = (int)reader["clienteId"],
-                Fecha = Convert.ToDateTime(reader["fecha"]),
-                Total = (decimal)reader["total"],
-                Estado = reader["estado"].ToString(),
-                MetodoPago = reader["metodoPago"].ToString()
-            };
+                List<Venta> lista = new List<Venta>();
+
+                while (reader.Read())
+                {
+                    Venta venta = new Venta();
+                    venta.Id = Convert.ToInt32(reader["id"]);
+                    venta.FechaVenta = Convert.ToDateTime(reader["fecha"]);
+                    venta.ClienteId = reader["clienteId"] != DBNull.Value ? Convert.ToInt32(reader["clienteId"]) : 0;
+                    venta.Total = Convert.ToDecimal(reader["total"]);
+                    //Detalles = new List<DetalleVenta>(;
+
+                    lista.Add(venta);
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mapear venta: " + ex.Message);
+            }
         }
+
+
     }
 }

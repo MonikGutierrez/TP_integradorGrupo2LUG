@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-//using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
-using System.Transactions;
 using Entity;
 using MPP;
 
@@ -11,58 +9,99 @@ namespace DAL
 {
     public class VentaDAO
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["SarkanyDB"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["AtelierSarkany"].ConnectionString;
+
+        public List<Venta> ListarTodo()
+        {
+            try
+            {
+                List<Venta> lista = new List<Venta>();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Venta";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            VentaMapper ventaMapper = new VentaMapper();
+                            return ventaMapper.ListarTodo(reader);
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
         public void Agregar(Venta venta)
         {
-            using (TransactionScope scope = new TransactionScope())
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-
-                SqlCommand cmdVenta = new SqlCommand(
-                    "INSERT INTO Venta (clienteId, fecha, total, estado, metodoPago) OUTPUT INSERTED.id VALUES (@clienteId, @fecha, @total, @estado, @metodo)", conn);
-                cmdVenta.Parameters.AddWithValue("@clienteId", venta.ClienteId);
-                cmdVenta.Parameters.AddWithValue("@fecha", venta.Fecha);
-                cmdVenta.Parameters.AddWithValue("@total", venta.Total);
-                cmdVenta.Parameters.AddWithValue("@estado", venta.Estado);
-                cmdVenta.Parameters.AddWithValue("@metodo", venta.MetodoPago);
-
-                int ventaId = (int)cmdVenta.ExecuteScalar();
-
-                foreach (var det in venta.Detalles)
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmdDet = new SqlCommand(
-                        "INSERT INTO DetalleVenta (ventaId, productoId, cantidad, precioUnitario) VALUES (@ventaId, @productoId, @cantidad, @precio)", conn);
-                    cmdDet.Parameters.AddWithValue("@ventaId", ventaId);
-                    cmdDet.Parameters.AddWithValue("@productoId", det.ProductoId);
-                    cmdDet.Parameters.AddWithValue("@cantidad", det.Cantidad);
-                    cmdDet.Parameters.AddWithValue("@precio", det.PrecioUnitario);
-                    cmdDet.ExecuteNonQuery();
-                }
+                    conn.Open();
 
-                scope.Complete();
+                    string query = "INSERT INTO Venta (clienteId, fecha, total) VALUES (@clienteId, @fecha, @total); SELECT SCOPE_IDENTITY()";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    //reviso y le paso si tiene o no clienteId. Si es 0, le paso DBNull.Value
+                    if (venta.ClienteId == 0)
+                    {
+                        cmd.Parameters.AddWithValue("@clienteId", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@clienteId", venta.ClienteId);
+                    }
+                    cmd.Parameters.AddWithValue("@fecha", venta.FechaVenta);
+                    cmd.Parameters.AddWithValue("@total", venta.Total);
+                    venta.Id = Convert.ToInt32(cmd.ExecuteScalar());
+
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
-        public List<Venta> Listar()
+        public void Eliminar(Venta venta)
         {
-            List<Venta> lista = new List<Venta>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = "SELECT * FROM Venta";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                VentaMapper mapper = new VentaMapper();
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    lista.Add(mapper.Mapear(reader));
+                    conn.Open();
+                    string query = "DELETE FROM Venta WHERE Id = @id";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", venta.Id);
+                    cmd.ExecuteNonQuery();
                 }
             }
-            return lista;
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public Venta ObtenerVentaPorId(int id)
+        {
+            return null;
+        }
+        public bool TieneVentasActivasConCalzado(int calzadoId)
+        {
+            return false;
         }
     }
 }
-

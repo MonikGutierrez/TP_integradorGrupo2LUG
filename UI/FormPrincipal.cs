@@ -92,25 +92,7 @@ namespace UI
                 );
             }
         }
-    
 
-        private void btnReservas_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                FormReservas form = new FormReservas();
-                form.ShowDialog();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(
-                    "Ocurrió un error al abrir el formulario de Reservas",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
-        }
 
         private void btnCitas_Click_1(object sender, EventArgs e)
         {
@@ -141,24 +123,6 @@ namespace UI
             {
                 MessageBox.Show(
                     "Ocurrió un error al abrir el formulario de Pagos",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
-        }
-
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                FormStock form = new FormStock();
-                form.ShowDialog();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(
-                    "Ocurrió un error al abrir el formulario de Stock",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error

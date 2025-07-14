@@ -10,42 +10,91 @@ namespace DAL
 {
     public class PagoDAO
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["SarkanyDB"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["AtelierSarkany"].ConnectionString;
 
         public void Agregar(Pago pago)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO Pago (clienteId, monto, fechaPago, metodoPago, observaciones) VALUES (@clienteId, @monto, @fechaPago, @metodoPago, @observaciones)", conn);
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(
+                        "INSERT INTO Pago (monto, fecha, medioPago, ventaId) VALUES (@monto, @fecha, @medioPago, @ventaId)", conn);
 
-                cmd.Parameters.AddWithValue("@clienteId", pago.ClienteId);
-                cmd.Parameters.AddWithValue("@monto", pago.Monto);
-                cmd.Parameters.AddWithValue("@fechaPago", pago.FechaPago);
-                cmd.Parameters.AddWithValue("@metodoPago", pago.MetodoPago);
-                cmd.Parameters.AddWithValue("@observaciones", pago.Observaciones);
+                    cmd.Parameters.AddWithValue("@monto", pago.Monto);
+                    cmd.Parameters.AddWithValue("@fecha", pago.Fecha);
+                    cmd.Parameters.AddWithValue("@medioPago", pago.MedioPago);
+                    cmd.Parameters.AddWithValue("@ventaId", pago.VentaId);
 
-                cmd.ExecuteNonQuery();
+
+                    cmd.ExecuteNonQuery();
+                }
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
-        public List<Pago> Listar()
-        {
-            List<Pago> lista = new List<Pago>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Pago", conn);
-                SqlDataReader reader = cmd.ExecuteReader();
 
-                PagoMapper mapper = new PagoMapper();
-                while (reader.Read())
+
+        public void Eliminar(Pago pago)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    lista.Add(mapper.Mapear(reader));
+                    conn.Open();
+
+                    string query = "DELETE FROM Pago WHERE Id = @Id";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", pago.Id);
+
+                    cmd.ExecuteNonQuery();
+
                 }
+
             }
-            return lista;
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        public List<Pago> ListarTodo()
+        {
+            try
+            {
+                List<Pago> lista = new List<Pago>();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Pago";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            PagoMapper pagoMapper = new PagoMapper();
+                            return pagoMapper.ListarTodo(reader);
+
+                        }
+                    }
+
+                }
+                return lista;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
     }
 }

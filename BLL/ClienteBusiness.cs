@@ -1,75 +1,144 @@
-﻿using DAL;
-using Entity;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Mail;
+using System.Transactions;
+using DAL;
+using Entity;
 
 namespace BLL
 {
     public class ClienteBusiness
     {
-        private ClienteDAO dao = new ClienteDAO();
+        private readonly ClienteDAO _dao = new ClienteDAO();
 
-        public List<Cliente> Listar()
+        public List<Cliente> ListarTodo()
         {
-            return dao.Listar();
+            
+                try
+                {
+                    return _dao.ListarTodo();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+        }
+
+        public Cliente Listar(Cliente cliente)
+        {
+            try
+            {
+                return _dao.Listar(cliente);
+                   
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Agregar(Cliente cliente)
         {
-            ValidarCliente(cliente);
-            dao.Agregar(cliente);
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    ValidarCliente(cliente);
+
+                    if (_dao.ExisteDNI(cliente.DNI))
+                        throw new Exception("El DNI ya está registrado.");
+
+                    cliente.FechaRegistro = DateTime.Now;
+
+                    _dao.Agregar(cliente);
+                    scope.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar cliente: " + ex.Message);
+            }
+
         }
+
         public void Modificar(Cliente cliente)
         {
-            if (cliente == null || cliente.Id <= 0)
-                throw new Exception("Cliente inválido.");
-            ValidarCliente(cliente);
-            dao.Modificar(cliente);
-        }
 
-        public void Eliminar(int id)
-        {
-            if (id <= 0)
-                throw new Exception("ID inválido para eliminar.");
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    if (cliente == null || cliente.Id <= 0)
+                        throw new Exception("Cliente inválido.");
 
-            dao.Eliminar(id);
-        }
+                    ValidarCliente(cliente);
 
-        private void ValidarCliente(Cliente cliente) {
-            // Validamos que el nombre y apellido no sea vacio
-            if (string.IsNullOrWhiteSpace(cliente.Nombre) || string.IsNullOrWhiteSpace(cliente.Apellido))
-                throw new Exception("El nombre y apellido son obligatorios.");
+                    if (_dao.ExisteDNIParaOtroCliente(cliente.DNI, cliente.Id))
+                        throw new Exception("El DNI ya está registrado para otro cliente.");
 
-            // Validamos que el telefono no sea vacio
-            if (string.IsNullOrWhiteSpace(cliente.Telefono))
-                throw new Exception("El teléfono es obligatorio.");
-
-            // Validamos que el email no sea vacio
-            if (string.IsNullOrWhiteSpace(cliente.Email))
-                throw new Exception("El email es obligatorio.");
-
-            // Validamos que el telefono no contenga letras
-            if (!cliente.Telefono.Trim().All(char.IsDigit))
-                throw new Exception("El teléfono ingresado no debe contener letras.");
-            
-            // Validamos que el telefono contenga menos de 8 digitos
-            if (cliente.Telefono.Trim().Length < 8)
-                throw new Exception("El teléfono ingresado debe contener más de 8 dígitos.");
-
-            // Validamos que el mail tenga un formato valido
-            if (!EsEmailValido(cliente.Email.Trim()))
-                throw new Exception("El formato del email ingresado no es válido.");
-        }
-
-        bool EsEmailValido(string email) {
-            try {
-                var direccion = new MailAddress(email);
-                return direccion.Address == email;
-            } catch {
-                return false;
+                    _dao.Modificar(cliente);
+                    scope.Complete();
+                }
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar cliente: " + ex.Message);
+            }
+        }
+
+        public void Eliminar(Cliente cliente)
+        {
+            try
+            {
+                using (var scope = new TransactionScope())
+                {
+                    if (cliente.Id <= 0)
+                        throw new Exception("ID inválido para eliminar.");
+
+
+                    _dao.Eliminar(cliente);
+                    scope.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar cliente: " + ex.Message);
+            }
+        }
+
+        private void ValidarCliente(Cliente cliente)
+        {
+            
+            try
+            {
+                if (string.IsNullOrWhiteSpace(cliente.Nombre) || string.IsNullOrWhiteSpace(cliente.Apellido))
+                    throw new Exception("El nombre y apellido son obligatorios.");
+
+                if (string.IsNullOrWhiteSpace(cliente.DNI))
+                    throw new Exception("El DNI es obligatorio y contener no mas de 8 dígitos.");
+
+                if (string.IsNullOrWhiteSpace(cliente.Telefono))
+                    throw new Exception("El teléfono es obligatorio.");
+
+                if (!cliente.Telefono.Trim().All(char.IsDigit))
+                    throw new Exception("El teléfono no debe contener letras.");
+
+                if (cliente.Telefono.Trim().Length < 8)
+                    throw new Exception("El teléfono debe contener al menos 8 dígitos.");
+
+                if (string.IsNullOrWhiteSpace(cliente.Email))
+                    throw new Exception("El email es obligatorio.");
+ 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
         }
 
     }
 }
-

@@ -1,16 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Entity
+﻿namespace Entity
 {
     public class Venta
     {
         public int Id { get; set; }
         public int ClienteId { get; set; }
-        public DateTime Fecha { get; set; }
+        public Cliente Cliente { get; set; }
+        public DateTime FechaVenta { get; set; }
         public decimal Total { get; set; }
-        public string Estado { get; set; }
-        public string MetodoPago { get; set; }
-        public List<DetalleVenta> Detalles { get; set; } = new List<DetalleVenta>();
+        public List<DetalleVenta> Detalles { get; set; }
+
+        public Venta()
+        {
+            Detalles = new List<DetalleVenta>();
+        }
+
+        public decimal CalcularTotalVenta()
+        {
+            try
+            {
+                decimal total = 0;
+                foreach (var detalle in Detalles)
+                {
+                    total += detalle.PrecioUnitario * detalle.Cantidad;
+                }
+                return total;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

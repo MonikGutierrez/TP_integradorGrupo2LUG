@@ -10,41 +10,119 @@ namespace DAL
 {
     public class CitaDAO
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["SarkanyDB"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["AtelierSarkany"].ConnectionString;
+
+        public List<Cita> ListarTodo()
+        {
+            try
+            {
+                List<Cita> lista = new List<Cita>();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Cita";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            CitaMapper citaMapper = new CitaMapper();
+                            return citaMapper.ListarTodo(reader);
+
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+
+        }
+
+
 
         public void Agregar(Cita cita)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO Cita (reservaId, fechaHora, tipoEstado, observaciones) VALUES (@reservaId, @fechaHora, @tipoEstado, @observaciones)", conn);
-
-                cmd.Parameters.AddWithValue("@reservaId", cita.ReservaId);
-                cmd.Parameters.AddWithValue("@fechaHora", cita.FechaHora);
-                cmd.Parameters.AddWithValue("@tipoEstado", cita.TipoEstado);
-                cmd.Parameters.AddWithValue("@observaciones", cita.Observaciones);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        public List<Cita> Listar()
-        {
-            List<Cita> lista = new List<Cita>();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Cita", conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                CitaMapper mapper = new CitaMapper();
-                while (reader.Read())
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    lista.Add(mapper.Mapear(reader));
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(
+                        "INSERT INTO Cita (clienteId, fechaHora, tipoEstado, observaciones) VALUES (@clienteId, @fechaHora, @tipoEstado, @observaciones)", conn);
+
+                    cmd.Parameters.AddWithValue("@clienteId", cita.ClienteId);
+                    cmd.Parameters.AddWithValue("@fechaHora", cita.FechaHora);
+                    cmd.Parameters.AddWithValue("@tipoEstado", cita.TipoEstado);
+                    cmd.Parameters.AddWithValue("@observaciones", cita.Observaciones);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
-            return lista;
+            catch (Exception)
+            {
+                throw;
+
+            }
+
         }
+
+
+        public void Modificar(Cita cita)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(
+                        @"UPDATE Cita SET  clienteId = @clienteId, fechaHora = @fechaHora, tipoEstado = @tipoEstado, observaciones = @observaciones WHERE id = @id", conn);
+
+                    cmd.Parameters.AddWithValue("@Id", cita.Id);
+                    cmd.Parameters.AddWithValue("@clienteId", cita.ClienteId);
+                    cmd.Parameters.AddWithValue("@fechaHora", cita.FechaHora);
+                    cmd.Parameters.AddWithValue("@tipoEstado", cita.TipoEstado);
+                    cmd.Parameters.AddWithValue("@observaciones", cita.Observaciones ?? (object)DBNull.Value);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+
+        }
+
+        public void Eliminar(Cita cita)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (var scope = new System.Transactions.TransactionScope())
+                    {
+                        string query = "DELETE FROM Cita WHERE Id = @Id";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", cita.Id);
+                            cmd.ExecuteNonQuery();
+                        }
+                        scope.Complete();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+
+            }
+
+
+        }
+
     }
 }

@@ -8,7 +8,7 @@ namespace UI
     public partial class FormClientes : Form
     {
         private ClienteBusiness clienteBusiness = new ClienteBusiness();
-        private Cliente clienteSeleccionado;
+
 
         public FormClientes()
         {
@@ -23,61 +23,63 @@ namespace UI
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al cargar la lista de clientes",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-      
+                MessageBox.Show("Error al cargar la lista de clientes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void CargarGrilla()
         {
-            dgvClientes.DataSource = null;
-            dgvClientes.DataSource = clienteBusiness.Listar();
-            dgvClientes.ClearSelection();
-            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            try
+            {
+                // Sobre lo visual:
+                dgvClientes.EnableHeadersVisualStyles = false;
+                dgvClientes.ColumnHeadersDefaultCellStyle.BackColor = Color.Maroon;
+                dgvClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgvClientes.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                dgvClientes.ColumnHeadersHeight = 30;
 
-            //renombro encabezados
-            dgvClientes.Columns[0].HeaderText = "Código";          // primera columna
-            dgvClientes.Columns[dgvClientes.Columns.Count - 1].HeaderText = "Fecha Registro"; // última
+                dgvClientes.DefaultCellStyle.SelectionBackColor = Color.RosyBrown;
+                dgvClientes.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
 
-            // Selecciona siempre la fila completa al hacer clic en cualquier celda
-            this.dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                // Color distinto cuando la fila completa está seleccionada:
+                dgvClientes.RowsDefaultCellStyle.SelectionBackColor = Color.RosyBrown;
+                dgvClientes.RowsDefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
 
-            // Desactivo que se puedan seleccionar varias filas a la vez
-            this.dgvClientes.MultiSelect = false;
+                dgvClientes.DataSource = null;
+                dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvClientes.RowHeadersVisible = false; // saca el encabezado lateral
+                dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //Selecciona todo el registro
+                dgvClientes.AllowUserToAddRows = false; // evita la fila en blanco al final
 
-            // Fuerza Courier New en todas las celdas (filas pares e impares)
-            this.dgvClientes.DefaultCellStyle.Font =
-                new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular,
-                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvClientes.AlternatingRowsDefaultCellStyle.Font =
-                new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular,
-                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                //Unifica la fuente general del DataGridView
+                dgvClientes.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
 
-            // --- Selección con mismo resaltado en TODAS las filas ---
-            dgvClientes.RowsDefaultCellStyle.SelectionBackColor = Color.Silver;
-            dgvClientes.RowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 0, 0);
-            dgvClientes.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.Silver;
-            dgvClientes.AlternatingRowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 0, 0);
+                dgvClientes.DataSource = clienteBusiness.ListarTodo();
+                dgvClientes.ClearSelection();
 
-            // Fuerza Courier New en encabezados
-            this.dgvClientes.ColumnHeadersDefaultCellStyle.Font =
-                new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Bold,
-                                        System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                // Renombrar encabezados
+                dgvClientes.Columns["Id"].HeaderText = "Código";
+                dgvClientes.Columns["DNI"].HeaderText = "DNI";
+                dgvClientes.Columns["FechaRegistro"].HeaderText = "Fecha Registro";
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 
-        #region ABM + Clean
         private void btnAlta_Click(object sender, EventArgs e)
         {
             try
             {
-                Cliente nuevo = new Cliente()
+                Cliente nuevo = new Cliente
                 {
                     Nombre = txtNombre.Text,
                     Apellido = txtApellido.Text,
+                    DNI = txtDNI.Text, // Nuevo campo
                     Email = txtEmail.Text,
                     Telefono = txtTelefono.Text,
                     FechaRegistro = DateTime.Now
@@ -96,20 +98,23 @@ namespace UI
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null)
-            {
-                MessageBox.Show("Seleccione un cliente para modificar.");
-                return;
-            }
-
             try
             {
-                clienteSeleccionado.Nombre = txtNombre.Text;
-                clienteSeleccionado.Apellido = txtApellido.Text;
-                clienteSeleccionado.Email = txtEmail.Text;
-                clienteSeleccionado.Telefono = txtTelefono.Text;
+                if (lblId.Text == "")
+                {
+                    MessageBox.Show("Seleccione un cliente para modificar.");
+                    return;
+                }
 
-                clienteBusiness.Modificar(clienteSeleccionado);
+                Cliente clienteNuevo = new Cliente();
+                clienteNuevo.Id = Convert.ToInt32(lblId.Text);
+                clienteNuevo.Nombre = txtNombre.Text;
+                clienteNuevo.Apellido = txtApellido.Text;
+                clienteNuevo.DNI = txtDNI.Text; // Nuevo campo
+                clienteNuevo.Email = txtEmail.Text;
+                clienteNuevo.Telefono = txtTelefono.Text;
+
+                clienteBusiness.Modificar(clienteNuevo);
                 MessageBox.Show("Cliente modificado correctamente");
                 CargarGrilla();
                 LimpiarCampos();
@@ -122,31 +127,31 @@ namespace UI
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null)
-            {
-                MessageBox.Show("Seleccione un cliente para eliminar.");
-                return;
-            }
-
-            if (MessageBox.Show("¿Está seguro de eliminar al cliente?", "Confirmar",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                != DialogResult.Yes)
-                return;
 
             try
             {
-                clienteBusiness.Eliminar(clienteSeleccionado.Id);
-                MessageBox.Show("Cliente eliminado correctamente.", "Éxito",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (lblId.Text == "")
+                {
+                    MessageBox.Show("Seleccione un cliente para eliminar.");
+                    return;
+                }
+
+                if (MessageBox.Show("¿Está seguro de eliminar al cliente?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    return;
+
+                Cliente cliente = new Cliente();
+                cliente.Id = Convert.ToInt32(lblId.Text);
+
+                clienteBusiness.Eliminar(cliente);
+                MessageBox.Show("Cliente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarGrilla();
                 LimpiarCampos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar cliente",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               
+                MessageBox.Show("Error al eliminar cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -157,13 +162,9 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Ocurrió un error al limpiar los campos",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("Ocurrió un error al limpiar los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void dgvClientes_SelectionChanged(object sender, EventArgs e)
@@ -172,32 +173,41 @@ namespace UI
             {
                 if (dgvClientes.SelectedRows.Count > 0)
                 {
-                    clienteSeleccionado = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
+                    Cliente clienteSeleccionado = (Cliente)dgvClientes.SelectedRows[0].DataBoundItem;
+                    lblId.Text = clienteSeleccionado.Id.ToString();
                     txtNombre.Text = clienteSeleccionado.Nombre;
                     txtApellido.Text = clienteSeleccionado.Apellido;
+                    txtDNI.Text = clienteSeleccionado.DNI;
                     txtEmail.Text = clienteSeleccionado.Email;
                     txtTelefono.Text = clienteSeleccionado.Telefono;
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Error inesperado al seleccionar cliente",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error inesperado al seleccionar cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
-        #endregion
-
         private void LimpiarCampos()
         {
-            txtNombre.Text = "";
-            txtApellido.Text = "";
-            txtEmail.Text = "";
-            txtTelefono.Text = "";
-            clienteSeleccionado = null;
+            try
+            {
+
+                lblId.Text = "";
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtDNI.Text = "";
+                txtEmail.Text = "";
+                txtTelefono.Text = "";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al limpiar los campos: " + ex.Message);
+            }
+
+
         }
-
-
     }
 }
